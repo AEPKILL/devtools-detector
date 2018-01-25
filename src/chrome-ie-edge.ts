@@ -1,10 +1,9 @@
-import { deferred } from 'deferred-factory';
 // tslint:disable-next-line:no-any
 const ele: any = document.createElement('div');
 let tempStatus = false;
 
 if (Object.defineProperty) {
-  Object.defineProperty(ele, 'id', {
+  Object.defineProperty(ele, 'className', {
     get() {
       tempStatus = true;
       return 'id';
@@ -12,7 +11,7 @@ if (Object.defineProperty) {
     configurable: true
   });
 } else if (ele.__defineGetter__) {
-  ele.__defineGetter__('id', () => {
+  ele.__defineGetter__('className', () => {
     tempStatus = true;
     return 'id';
   });

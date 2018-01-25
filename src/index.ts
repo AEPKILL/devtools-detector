@@ -1,3 +1,4 @@
+import { chromeCanaryDevtoolsIsOpen } from './chrome-canary';
 import { chromeIeEdgeDevtoolsIsOpen } from './chrome-ie-edge';
 import { devtoolsIsDocked } from './docked';
 import { firebugIsOpen, hasFirebug } from './firebug';
@@ -20,6 +21,9 @@ function detectLoop() {
     devtoolsIsOpen = firefoxDevtoolsIsOpen();
   } else {
     devtoolsIsOpen = chromeIeEdgeDevtoolsIsOpen();
+    if (!devtoolsIsOpen) {
+      devtoolsIsOpen = chromeCanaryDevtoolsIsOpen();
+    }
   }
   if (devtoolsCurrentStatus != devtoolsIsOpen) {
     emitDevtoolsStatusChange((devtoolsCurrentStatus = devtoolsIsOpen));
