@@ -62,6 +62,10 @@ I don't have Safari, so I didn't test it.
 
   set detect loop delay time , if **value =< 0** then stop detect.
 
+## Caveats
+
+In Firefox, if DevTools is undocked, detected only when switching to the **Console Panel**.
+
 ## reference
 
 > [sindresorhus/**devtools-detect**](https://github.com/sindresorhus/devtools-detect)
