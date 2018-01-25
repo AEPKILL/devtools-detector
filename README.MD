@@ -50,6 +50,18 @@ require(['devtools-detector'],function(devtoolsDetector){
 
 I don't have Safari, so I didn't test it.
 
+## API
+
+* lanuch()
+
+* addListener(listener)
+
+* removeListener(listener)
+
+* setDetectDelay(value)
+
+  set detect loop delay time , if **value =< 0** then stop detect.
+
 ## Caveats
 
 In Firefox, if DevTools is undocked, detected only when switching to the **Console Panel**.
