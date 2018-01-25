@@ -21,10 +21,8 @@ function detectLoop() {
   } else {
     devtoolsIsOpen = chromeIeEdgeDevtoolsIsOpen();
   }
-  if (!devtoolsCurrentStatus && devtoolsIsOpen) {
-    emitDevtoolsStatusChange((devtoolsCurrentStatus = true));
-  } else if (devtoolsCurrentStatus && !devtoolsIsOpen) {
-    emitDevtoolsStatusChange((devtoolsCurrentStatus = false));
+  if (devtoolsCurrentStatus != devtoolsIsOpen) {
+    emitDevtoolsStatusChange((devtoolsCurrentStatus = devtoolsIsOpen));
   }
   if (detectDelay > 0) {
     setTimeout(detectLoop, detectDelay);
