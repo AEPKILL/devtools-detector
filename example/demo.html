@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../lib/devtools-detector.js"></script>
+  <title>devtools-detector demo</title>
+  <style>
+    #text {
+      font-size: 30px;
+      margin-top: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='text'>devtools status: close</div>
+  <script>
+    devtoolsDetector.addListener(function (status) {
+      document.getElementById('text').innerText = status ? 'devtools status: open' : 'devtools status: close';
+    });
+    devtoolsDetector.launch();
+  </script>
+</body>
+
+</html>

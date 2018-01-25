@@ -1,0 +1,40 @@
+{
+  "name": "devtools-detector",
+  "version": "0.0.1",
+  "description": "devtools-detector",
+  "main": "lib/devtools-detector.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AEPKILL/devtools-detector"
+  },
+  "keywords": [
+    "devtools-detect",
+    "devtools-detector"
+  ],
+  "files": [
+    "lib"
+  ],
+  "author": {
+    "name": "AEPKILL",
+    "email": "a@aepkill.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AEPKILL/devtools-detector/issues"
+  },
+  "homepage": "https://github.com/AEPKILL/devtools-detector#readme",
+  "devDependencies": {
+    "webpack": "^3.8.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "uglifyjs-webpack-plugin": "^1.1.1",
+    "typescript": "^2.6.1",
+    "ts-loader": "^3.1.1"
+  },
+  "dependencies": {
+    "deferred-factory": "^1.0.2"
+  }
+}
