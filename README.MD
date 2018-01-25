@@ -1,6 +1,6 @@
 # devtools-detector
 
-##Install
+## Install
 
 `npm install devtools-detector --save`
 
