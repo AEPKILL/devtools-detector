@@ -1,4 +1,4 @@
-# devtools-detector [![devtools-detector](https://img.shields.io/npm/v/devtools-detector.svg?colorB=green)](https://www.npmjs.com/package/devtools-detector)
+# devtools-detector [![devtools-detector](https://img.shields.io/npm/v/devtools-detector.svg?colorB=green&label=devtools-detector)](https://www.npmjs.com/package/devtools-detector)
 
 ## Install
 
