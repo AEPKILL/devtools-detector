@@ -1,3 +1,5 @@
+import { clear, log } from './console';
+
 const reg = /  /;
 let tempStatus = false;
 
@@ -8,8 +10,8 @@ reg.toString = () => {
 
 export function firefoxDevtoolsIsOpen() {
   tempStatus = false;
-  console.log(reg);
-  console.clear();
+  log(reg);
+  clear();
   return tempStatus;
 }
 

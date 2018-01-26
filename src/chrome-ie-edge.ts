@@ -1,3 +1,5 @@
+import { clear, log } from './console';
+
 // tslint:disable-next-line:no-any
 const ele: any = document.createElement('div');
 let tempStatus = false;
@@ -19,8 +21,8 @@ if (Object.defineProperty) {
 
 export function chromeIeEdgeDevtoolsIsOpen() {
   tempStatus = false;
-  console.log(ele);
-  console.clear();
+  log(ele);
+  clear();
   return tempStatus;
 }
 

@@ -1,5 +1,6 @@
 import { chromeCanaryDevtoolsIsOpen } from './chrome-canary';
 import { chromeIeEdgeDevtoolsIsOpen } from './chrome-ie-edge';
+import { patch } from './console';
 import { devtoolsIsDocked } from './docked';
 import { firebugIsOpen, hasFirebug } from './firebug';
 import { firefoxDevtoolsIsOpen } from './firefox';
@@ -51,3 +52,5 @@ export function launch() {
   wasLaunch = true;
   detectLoop();
 }
+
+patch();
