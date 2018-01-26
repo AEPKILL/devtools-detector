@@ -64,9 +64,10 @@ I don't have Safari, so I didn't test it.
 
 ## Caveats
 
-In Firefox, if DevTools is undocked, detected only when switching to the **Console Panel**.
+1. In Firefox, if DevTools is undocked, detected only when switching to the **Console Panel**.
+2. Make sure `devtools-detector` is the frist one to load
 
-## reference
+## Reference
 
 > [sindresorhus/**devtools-detect**](https://github.com/sindresorhus/devtools-detect)
 >
