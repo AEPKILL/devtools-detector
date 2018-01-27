@@ -2,32 +2,38 @@ import { chromeCanaryDevtoolsIsOpen } from './chrome-canary';
 import { chromeIeEdgeDevtoolsIsOpen } from './chrome-ie-edge';
 import { patch } from './console';
 import { devtoolsIsDocked } from './docked';
-import { firebugIsOpen, hasFirebug } from './firebug';
+import { firebugIsOpen } from './firebug';
 import { firefoxDevtoolsIsOpen } from './firefox';
 import { emitDevtoolsStatusChange } from './listeners';
 
 const isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
-let devtoolsCurrentStatus = false;
+let devtoolsStatus = false;
 let wasLaunch = false;
 let detectDelay = 500;
 let detectLoopStoped = false;
 
-function detectLoop() {
-  let devtoolsIsOpen = false;
+function devtoolsIsOpen() {
   if (devtoolsIsDocked()) {
-    devtoolsIsOpen = true;
-  } else if (hasFirebug()) {
-    devtoolsIsOpen = firebugIsOpen();
-  } else if (isFirefox) {
-    devtoolsIsOpen = firefoxDevtoolsIsOpen();
-  } else {
-    devtoolsIsOpen = chromeIeEdgeDevtoolsIsOpen();
-    if (!devtoolsIsOpen) {
-      devtoolsIsOpen = chromeCanaryDevtoolsIsOpen();
-    }
+    return true;
   }
-  if (devtoolsCurrentStatus != devtoolsIsOpen) {
-    emitDevtoolsStatusChange((devtoolsCurrentStatus = devtoolsIsOpen));
+  if (firebugIsOpen()) {
+    return true;
+  }
+  if (isFirefox) {
+    return firefoxDevtoolsIsOpen();
+  }
+  if (chromeIeEdgeDevtoolsIsOpen()) {
+    return true;
+  }
+  if (chromeCanaryDevtoolsIsOpen()) {
+    return true;
+  }
+}
+
+function detectLoop() {
+  const devtoolsCurrentStatus = devtoolsIsOpen();
+  if (devtoolsStatus != devtoolsCurrentStatus) {
+    emitDevtoolsStatusChange((devtoolsStatus = devtoolsCurrentStatus));
   }
   if (detectDelay > 0) {
     setTimeout(detectLoop, detectDelay);

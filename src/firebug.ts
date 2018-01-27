@@ -5,15 +5,15 @@ declare global {
     Firebug: any;
   }
 }
-export function hasFirebug() {
-  return window.Firebug && window.Firebug.chrome;
-}
 
 export function firebugIsOpen() {
-  return window.Firebug.chrome.isInitialized;
+  return (
+    window.Firebug &&
+    window.Firebug.chrome &&
+    window.Firebug.chrome.isInitialized
+  );
 }
 
 export default {
-  hasFirebug,
   firebugIsOpen
 };
