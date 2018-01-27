@@ -8,9 +8,8 @@ import { emitDevtoolsStatusChange } from './listeners';
 
 const isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
 let devtoolsStatus = false;
-let wasLaunch = false;
+let detectLoopStoped = true;
 let detectDelay = 500;
-let detectLoopStoped = false;
 
 function devtoolsIsOpen() {
   if (devtoolsIsDocked()) {
@@ -47,16 +46,13 @@ export { Listener, addListener, removeListener } from './listeners';
 export function setDetectDelay(value: number) {
   detectDelay = value;
   if (detectDelay > 0 && detectLoopStoped) {
+    detectLoopStoped = false;
     detectLoop();
   }
 }
 
 export function launch() {
-  if (wasLaunch) {
-    return;
-  }
-  wasLaunch = true;
-  detectLoop();
+  setDetectDelay(500);
 }
 
 patch();
