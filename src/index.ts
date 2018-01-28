@@ -1,12 +1,12 @@
+import { isFirefox } from './browser';
 import { chromeCanaryDevtoolsIsOpen } from './chrome-canary';
 import { chromeIeEdgeDevtoolsIsOpen } from './chrome-ie-edge';
-import { patch } from './console';
+import { clear } from './console';
 import { devtoolsIsDocked } from './docked';
 import { firebugIsOpen } from './firebug';
 import { firefoxDevtoolsIsOpen } from './firefox';
 import { emitDevtoolsStatusChange } from './listeners';
 
-const isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
 let devtoolsStatus = false;
 let detectLoopStoped = true;
 let detectDelay = 500;
@@ -27,10 +27,12 @@ function devtoolsIsOpen() {
   if (chromeCanaryDevtoolsIsOpen()) {
     return true;
   }
+  return false;
 }
 
 function detectLoop() {
-  const devtoolsCurrentStatus = devtoolsIsOpen();
+  let devtoolsCurrentStatus = false;
+  devtoolsCurrentStatus = devtoolsIsOpen();
   if (devtoolsStatus != devtoolsCurrentStatus) {
     emitDevtoolsStatusChange((devtoolsStatus = devtoolsCurrentStatus));
   }
@@ -39,6 +41,7 @@ function detectLoop() {
   } else {
     detectLoopStoped = true;
   }
+  clear();
 }
 
 export { Listener, addListener, removeListener } from './listeners';
@@ -54,5 +57,3 @@ export function setDetectDelay(value: number) {
 export function launch() {
   setDetectDelay(500);
 }
-
-patch();

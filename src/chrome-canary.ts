@@ -1,4 +1,4 @@
-import { clear, table } from './console';
+import { table } from './console';
 
 const reg = /  /;
 let tempStatus = false;
@@ -11,7 +11,6 @@ reg.toString = () => {
 export function chromeCanaryDevtoolsIsOpen() {
   tempStatus = false;
   table({ dep: { reg } });
-  clear();
   return tempStatus;
 }
 

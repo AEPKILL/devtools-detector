@@ -1,4 +1,4 @@
-import { clear, log } from './console';
+import { log } from './console';
 
 const reg = /  /;
 let tempStatus = false;
@@ -11,7 +11,6 @@ reg.toString = () => {
 export function firefoxDevtoolsIsOpen() {
   tempStatus = false;
   log(reg);
-  clear();
   return tempStatus;
 }
 
