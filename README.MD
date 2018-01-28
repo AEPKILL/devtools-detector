@@ -6,7 +6,7 @@
 
 ## Usage
 
-Try this **[DEMO](http://blog.aepkill.com/demos/devtools-detector/)**
+**Try this [DEMO](http://blog.aepkill.com/demos/devtools-detector/)**
 
 ### ES6 & TypeScript
 
