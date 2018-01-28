@@ -47,8 +47,8 @@ require(['devtools-detector'],function(devtoolsDetector){
 * Edge
 * Chrome
 * Firefox
-
-I don't have Safari, so I didn't test it.
+* Safari
+* Opera
 
 ## API
 
