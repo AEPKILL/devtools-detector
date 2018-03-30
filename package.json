@@ -28,10 +28,10 @@
   },
   "homepage": "https://github.com/AEPKILL/devtools-detector#readme",
   "devDependencies": {
-    "webpack": "^3.8.1",
     "clean-webpack-plugin": "^0.1.17",
+    "ts-loader": "^3.1.1",
+    "typescript": "^2.8.1",
     "uglifyjs-webpack-plugin": "^1.1.1",
-    "typescript": "^2.6.1",
-    "ts-loader": "^3.1.1"
+    "webpack": "^3.8.1"
   }
 }
