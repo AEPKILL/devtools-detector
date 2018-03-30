@@ -10,6 +10,7 @@ import { emitDevtoolsStatusChange } from './listeners';
 let devtoolsStatus = false;
 let detectLoopStoped = true;
 let detectDelay = 500;
+let timer!: number;
 
 function devtoolsIsOpen() {
   if (devtoolsIsDocked()) {
@@ -31,13 +32,12 @@ function devtoolsIsOpen() {
 }
 
 function detectLoop() {
-  let devtoolsCurrentStatus = false;
-  devtoolsCurrentStatus = devtoolsIsOpen();
+  const devtoolsCurrentStatus = devtoolsIsOpen();
   if (devtoolsStatus != devtoolsCurrentStatus) {
     emitDevtoolsStatusChange((devtoolsStatus = devtoolsCurrentStatus));
   }
   if (detectDelay > 0) {
-    setTimeout(detectLoop, detectDelay);
+    timer = setTimeout(detectLoop, detectDelay);
   } else {
     detectLoopStoped = true;
   }
@@ -48,16 +48,19 @@ export { Listener, addListener, removeListener } from './listeners';
 
 export function setDetectDelay(value: number) {
   detectDelay = value;
-  if (detectDelay > 0 && detectLoopStoped) {
+}
+
+export function launch() {
+  if (detectDelay <= 0) {
+    setDetectDelay(500);
+  }
+  if (detectLoopStoped) {
     detectLoopStoped = false;
     detectLoop();
   }
 }
 
-export function launch() {
-  setDetectDelay(500);
-}
-
 export function stop() {
-  setDetectDelay(0);
+  detectLoopStoped = true;
+  clearTimeout(timer);
 }
