@@ -1,5 +1,5 @@
 /**
- * Refence: https://github.com/tombigel/detect-zoom
+ * Ref: https://github.com/tombigel/detect-zoom
  */
 
 // tslint:disable no-any
