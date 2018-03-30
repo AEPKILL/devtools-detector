@@ -24,7 +24,7 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['lib']),
     new UglifyJSPlugin({
       sourceMap: true
     })

@@ -57,3 +57,7 @@ export function setDetectDelay(value: number) {
 export function launch() {
   setDetectDelay(500);
 }
+
+export function stop() {
+  setDetectDelay(0);
+}

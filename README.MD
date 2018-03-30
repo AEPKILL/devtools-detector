@@ -11,9 +11,17 @@
 ### ES6 & TypeScript
 
 ```javascript
-import { addListener , launch } from 'devtools-detector';
+import { addListener, launch } from 'devtools-detector';
+const view = document.createElement('div');
+document.body.appendChild(view);
+
 // 1. add listener
-addListener(status => console.log(status));
+addListener(
+  status =>
+    (view.innerText = status
+      ? 'devtools status: open'
+      : 'devtools status: close')
+);
 // 2. launch detect
 launch();
 ```
@@ -21,12 +29,17 @@ launch();
 ### AMD
 
 ```javascript
-require(['devtools-detector'],function(devtoolsDetector){
-  devtoolsDetector.addListener(function(status){
-    console.log(status);
+require(['devtools-detector'], function(devtoolsDetector) {
+  var view = document.createElement('div');
+  document.body.appendChild(view);
+
+  devtoolsDetector.addListener(function(status) {
+    view.innerText = status
+      ? 'devtools status: open'
+      : 'devtools status: close';
   });
   devtoolsDetector.launch();
-})
+});
 ```
 
 ### No Module System
@@ -34,8 +47,13 @@ require(['devtools-detector'],function(devtoolsDetector){
 ```html
 <script src="node_modules/devtools-detector/lib/devtools-detector.js"></script>
 <script>
-  devtoolsDetector.addListener(function(status){
-    console.log(status);
+  var view = document.createElement('div');
+  document.body.appendChild(view);
+
+  devtoolsDetector.addListener(function (status) {
+    view.innerText = status
+      ? 'devtools status: open'
+      : 'devtools status: close'
   });
   devtoolsDetector.launch();
 </script>
@@ -53,6 +71,8 @@ require(['devtools-detector'],function(devtoolsDetector){
 ## API
 
 * lanuch()
+
+* stop()
 
 * addListener(listener)
 
