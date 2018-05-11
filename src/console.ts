@@ -1,4 +1,4 @@
-import { isIE } from './browser';
+import { isEdge, isIE } from './browser';
 
 // tslint:disable:no-any no-empty
 const FUNCTION_TYPE_STRING = typeof cacheConsoleMethod;
@@ -14,7 +14,7 @@ function cacheConsoleMethod<K extends keyof Console>(name: K): Console[K] {
   if (console) {
     const method = console[name];
     if (isFunction(method)) {
-      if (isIE) {
+      if (isIE || isEdge) {
         return (...args: any[]) => {
           console[name](...args);
         };
