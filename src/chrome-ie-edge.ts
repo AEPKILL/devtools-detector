@@ -1,27 +1,20 @@
-import { log } from './console';
+import { clear, log } from './console';
 
-// tslint:disable-next-line:no-any
-const ele: any = document.createElement('div');
+const ele = document.createElement('div');
 let tempStatus = false;
 
-if (Object.defineProperty) {
-  Object.defineProperty(ele, 'id', {
-    get() {
-      tempStatus = true;
-      return 'id';
-    },
-    configurable: true
-  });
-} else if (ele.__defineGetter__) {
-  ele.__defineGetter__('id', () => {
+Object.defineProperty(ele, 'id', {
+  get() {
     tempStatus = true;
-    return 'id';
-  });
-}
+    return '';
+  },
+  configurable: true
+});
 
 export function chromeIeEdgeDevtoolsIsOpen() {
   tempStatus = false;
   log(ele);
+  clear();
   return tempStatus;
 }
 

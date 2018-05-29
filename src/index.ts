@@ -1,7 +1,6 @@
 import { isFirefox } from './browser';
 import { chromeCanaryDevtoolsIsOpen } from './chrome-canary';
 import { chromeIeEdgeDevtoolsIsOpen } from './chrome-ie-edge';
-import { clear } from './console';
 import { devtoolsIsDocked } from './docked';
 import { firebugIsOpen } from './firebug';
 import { firefoxDevtoolsIsOpen } from './firefox';
@@ -10,7 +9,7 @@ import { emitDevtoolsStatusChange } from './listeners';
 let devtoolsStatus = false;
 let detectLoopStoped = true;
 let detectDelay = 500;
-let timer!: number;
+let timer: number;
 
 function devtoolsIsOpen() {
   if (devtoolsIsDocked()) {
@@ -39,9 +38,8 @@ function detectLoop() {
   if (detectDelay > 0) {
     timer = setTimeout(detectLoop, detectDelay);
   } else {
-    detectLoopStoped = true;
+    stop();
   }
-  clear();
 }
 
 export { Listener, addListener, removeListener } from './listeners';
@@ -63,4 +61,8 @@ export function launch() {
 export function stop() {
   detectLoopStoped = true;
   clearTimeout(timer);
+}
+
+export function isLaunch() {
+  return !detectLoopStoped;
 }

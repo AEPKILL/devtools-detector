@@ -72,7 +72,15 @@ require(['devtools-detector'], function(devtoolsDetector) {
 
 * lanuch()
 
+  lanuch detect
+
+* isLanuch()
+
+  if detect is lanuch then returen `true` , else return `false`
+
 * stop()
+
+  stop detect
 
 * addListener(listener)
 
