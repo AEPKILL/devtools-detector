@@ -11,7 +11,7 @@
 ### ES6 & TypeScript
 
 ```javascript
-import { addListener, launch } from 'devtools-detector';
+import { addListener, lanuch } from 'devtools-detector';
 const view = document.createElement('div');
 document.body.appendChild(view);
 
@@ -22,8 +22,8 @@ addListener(
       ? 'devtools status: open'
       : 'devtools status: close')
 );
-// 2. launch detect
-launch();
+// 2. lanuch detect
+lanuch();
 ```
 
 ### AMD
@@ -38,7 +38,7 @@ require(['devtools-detector'], function(devtoolsDetector) {
       ? 'devtools status: open'
       : 'devtools status: close';
   });
-  devtoolsDetector.launch();
+  devtoolsDetector.lanuch();
 });
 ```
 
@@ -55,7 +55,7 @@ require(['devtools-detector'], function(devtoolsDetector) {
       ? 'devtools status: open'
       : 'devtools status: close'
   });
-  devtoolsDetector.launch();
+  devtoolsDetector.lanuch();
 </script>
 ```
 

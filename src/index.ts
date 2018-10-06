@@ -48,7 +48,7 @@ export function setDetectDelay(value: number) {
   detectDelay = value;
 }
 
-export function launch() {
+export function lanuch() {
   if (detectDelay <= 0) {
     setDetectDelay(500);
   }
@@ -63,6 +63,6 @@ export function stop() {
   clearTimeout(timer);
 }
 
-export function isLaunch() {
+export function isLanuch() {
   return !detectLoopStoped;
 }
