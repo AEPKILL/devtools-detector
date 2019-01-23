@@ -1,9 +1,8 @@
 import { Detector, Listener } from './detector';
 import consoleChecker from './devtools-checker/console-checker';
-import devtoolsDockedChecker from './devtools-checker/docked-checker';
 
 const defaultDetector = new Detector({
-  checkers: [devtoolsDockedChecker, consoleChecker]
+  checkers: [consoleChecker]
 });
 
 export function addListener(listener: Listener) {
@@ -24,7 +23,4 @@ export function lanuch() {
 
 export { DevtoolsChecker } from './devtools-checker/devtools-checker';
 export { default as consoleChecker } from './devtools-checker/console-checker';
-export {
-  default as devtoolsDockedChecker
-} from './devtools-checker/docked-checker';
 export { Detector, Listener } from './detector';

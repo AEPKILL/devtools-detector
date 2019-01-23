@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>devtools-detector demo</title>
+    <style>
+      #text,
+      #checker {
+        font-size: 30px;
+        margin-top: 50px;
+        text-align: center;
+      }
+      #checker {
+        font-size: 16px;
+        margin-top: 10px;
+        color: brown;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="text">devtools status: close</div>
+    <div id="checker"></div>
+    <script src="../lib/devtools-detector.js"></script>
+    <script>
+      devtoolsDetector.addListener(function(isOpen, detail) {
+        if (isOpen) {
+          text.innerText = 'devtools status: open';
+          checker.innerText = detail.checkerName;
+        } else {
+          text.innerText = 'devtools status: close';
+          checker.innerText = '';
+        }
+      });
+      devtoolsDetector.lanuch();
+    </script>
+  </body>
+</html>

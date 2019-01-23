@@ -35,6 +35,7 @@ const consoleChecker: DevtoolsChecker = {
       // add namespace
       devtoolsDetail.checkerName = `${this.name}.${devtoolsDetail.checkerName}`;
     } else {
+      // replace checker name
       devtoolsDetail.checkerName = this.name;
     }
 
