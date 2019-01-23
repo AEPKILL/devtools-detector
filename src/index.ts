@@ -1,8 +1,9 @@
 import { Detector, Listener } from './detector';
 import consoleChecker from './devtools-checker/console-checker';
+import firebugChecker from './devtools-checker/firebug-checker';
 
 const defaultDetector = new Detector({
-  checkers: [consoleChecker]
+  checkers: [firebugChecker, consoleChecker]
 });
 
 export function addListener(listener: Listener) {

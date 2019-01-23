@@ -1,9 +1,11 @@
 export interface DevtoolsDetail {
   isOpen: boolean;
   checkerName: string;
+  directReturn?: boolean;
 }
 
 export interface DevtoolsChecker {
   name: string;
-  getDevtoolsDetail(): Promise<DevtoolsDetail>;
+  getDevtoolsDetail(this: DevtoolsChecker): Promise<DevtoolsDetail>;
+  skip?(): Promise<boolean>;
 }

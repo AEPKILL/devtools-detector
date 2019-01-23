@@ -2,24 +2,24 @@ import { clear, table } from '../../utils/console';
 import { DevtoolsChecker } from '../devtools-checker';
 
 const reg = / /;
-let tempStatus = false;
+let isOpen = false;
 
 reg.toString = () => {
-  tempStatus = true;
+  isOpen = true;
   return '';
 };
 
-const chromeCanaryChecker: DevtoolsChecker = {
+const chromeChecker: DevtoolsChecker = {
   name: 'chrome-checker',
   async getDevtoolsDetail() {
-    tempStatus = false;
+    isOpen = false;
     table({ dep: { reg } });
     clear();
     return {
-      isOpen: tempStatus,
+      isOpen,
       checkerName: this.name
     };
   }
 };
 
-export default chromeCanaryChecker;
+export default chromeChecker;

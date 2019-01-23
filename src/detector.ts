@@ -1,3 +1,4 @@
+import checkerGroup from './devtools-checker/checker-group';
 import {
   DevtoolsChecker,
   DevtoolsDetail
@@ -8,14 +9,14 @@ export interface DetectorOptions {
 }
 export type Listener = (isOpen: boolean, detail?: DevtoolsDetail) => void;
 export class Detector {
-  private readonly _checkers: DevtoolsChecker[];
+  private readonly _checker: DevtoolsChecker;
   private _listeners: Listener[] = [];
   private _isOpen = false;
   private _detectLoopStoped = true;
   private _detectLoopDelay = 500;
   private _timer!: number;
   constructor({ checkers }: DetectorOptions) {
-    this._checkers = checkers;
+    this._checker = checkerGroup(checkers);
   }
   lanuch() {
     if (this._detectLoopDelay <= 0) {
@@ -52,20 +53,8 @@ export class Detector {
     }
   }
 
-  private async _getDevtoolsDetail(): Promise<DevtoolsDetail> {
-    for (const checker of this._checkers) {
-      const devtoolsDetail = await checker.getDevtoolsDetail();
-      if (devtoolsDetail.isOpen) {
-        return devtoolsDetail;
-      }
-    }
-    return {
-      isOpen: false,
-      checkerName: 'all-checkers'
-    };
-  }
   private async _detectLoop() {
-    const detail = await this._getDevtoolsDetail();
+    const detail = await this._checker.getDevtoolsDetail();
     if (detail.isOpen != this._isOpen) {
       this._isOpen = detail.isOpen;
       this.emit(detail);

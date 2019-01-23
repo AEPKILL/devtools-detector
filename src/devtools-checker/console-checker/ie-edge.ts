@@ -1,28 +1,32 @@
+import { isEdge, isIE } from '../../utils/browser';
 import { clear, log } from '../../utils/console';
 import { DevtoolsChecker } from '../devtools-checker';
 
 const ele = document.createElement('div');
-let tempStatus = false;
+let isOpen = false;
 
 Object.defineProperty(ele, 'id', {
   get() {
-    tempStatus = true;
+    isOpen = true;
     return '';
   },
   configurable: true
 });
 
-const chromeIeEdgeChecker: DevtoolsChecker = {
+const IeEdgeChecker: DevtoolsChecker = {
   name: 'ie-edge-checker',
   async getDevtoolsDetail() {
-    tempStatus = false;
+    isOpen = false;
     log(ele);
     clear();
     return {
-      isOpen: tempStatus,
+      isOpen,
       checkerName: this.name
     };
+  },
+  async skip() {
+    return !(isEdge || isIE);
   }
 };
 
-export default chromeIeEdgeChecker;
+export default IeEdgeChecker;

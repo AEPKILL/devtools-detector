@@ -1,24 +1,29 @@
+import { isFirefox } from '../../utils/browser';
 import { clear, log } from '../../utils/console';
 import { DevtoolsChecker } from '../devtools-checker';
 
 const reg = / /;
-let tempStatus = false;
+let isOpen = false;
 
 reg.toString = () => {
-  tempStatus = true;
+  isOpen = true;
   return '';
 };
 
 const firefoxChecker: DevtoolsChecker = {
   name: 'firefox-checker',
   async getDevtoolsDetail() {
-    tempStatus = false;
+    isOpen = false;
     log(reg);
     clear();
     return {
-      isOpen: tempStatus,
-      checkerName: this.name
+      isOpen,
+      checkerName: this.name,
+      directReturn: true
     };
+  },
+  async skip() {
+    return !isFirefox;
   }
 };
 
