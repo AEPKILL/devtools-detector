@@ -22,7 +22,7 @@ function cacheConsoleMethod<K extends keyof Console>(name: K): Console[K] {
       return console[name];
     }
   }
-  return (...args: any[]) => {};
+  return (..._args: any[]) => {};
 }
 
 export const log = cacheConsoleMethod('log');

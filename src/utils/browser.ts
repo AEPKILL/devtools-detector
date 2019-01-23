@@ -1,6 +1,6 @@
 export const isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
 export const isIE =
-  // ie11+
+  // ie 11+
   navigator.userAgent.indexOf('Trident') > -1 ||
   // other ie browser
   navigator.userAgent.indexOf('MSIE') > -1;

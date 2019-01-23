@@ -2,6 +2,14 @@
  * Ref: https://github.com/tombigel/detect-zoom
  */
 
+declare global {
+  interface Screen {
+    deviceXDPI: number;
+    logicalXDPI: number;
+    systemXDPI: number;
+  }
+}
+
 // tslint:disable no-any
 
 /**
@@ -20,7 +28,7 @@ function devicePixelRatio() {
  * @private
  */
 function ie8() {
-  const zoom = Math.round(screen.deviceXDPI / screen.logicalXDPI * 100) / 100;
+  const zoom = Math.round((screen.deviceXDPI / screen.logicalXDPI) * 100) / 100;
   return {
     zoom,
     devicePxPerCssPx: zoom * devicePixelRatio()
@@ -36,7 +44,7 @@ function ie8() {
 function ie10() {
   const zoom =
     Math.round(
-      document.documentElement.offsetHeight / window.innerHeight * 100
+      (document.documentElement!.offsetHeight / window.innerHeight) * 100
     ) / 100;
   return {
     zoom,
@@ -49,7 +57,7 @@ function ie10() {
  *
  */
 function chrome() {
-  const zoom = Math.round(window.outerWidth / window.innerWidth * 100) / 100;
+  const zoom = Math.round((window.outerWidth / window.innerWidth) * 100) / 100;
   return {
     zoom,
     devicePxPerCssPx: zoom * devicePixelRatio()
@@ -62,8 +70,9 @@ function chrome() {
  */
 function safari() {
   const zoom =
-    Math.round(document.documentElement.clientWidth / window.innerWidth * 100) /
-    100;
+    Math.round(
+      (document.documentElement!.clientWidth / window.innerWidth) * 100
+    ) / 100;
   return {
     zoom,
     devicePxPerCssPx: zoom * devicePixelRatio()

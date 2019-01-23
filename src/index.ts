@@ -1,68 +1,30 @@
-import { isFirefox } from './browser';
-import { chromeCanaryDevtoolsIsOpen } from './chrome-canary';
-import { chromeIeEdgeDevtoolsIsOpen } from './chrome-ie-edge';
-import { devtoolsIsDocked } from './docked';
-import { firebugIsOpen } from './firebug';
-import { firefoxDevtoolsIsOpen } from './firefox';
-import { emitDevtoolsStatusChange } from './listeners';
+import { Detector, Listener } from './detector';
+import consoleChecker from './devtools-checker/console-checker';
+import devtoolsDockedChecker from './devtools-checker/docked-checker';
 
-let devtoolsStatus = false;
-let detectLoopStoped = true;
-let detectDelay = 500;
-let timer: number;
+const defaultDetector = new Detector({
+  checkers: [devtoolsDockedChecker, consoleChecker]
+});
 
-function devtoolsIsOpen() {
-  if (devtoolsIsDocked()) {
-    return true;
-  }
-  if (firebugIsOpen()) {
-    return true;
-  }
-  if (isFirefox) {
-    return firefoxDevtoolsIsOpen();
-  }
-  if (chromeIeEdgeDevtoolsIsOpen()) {
-    return true;
-  }
-  if (chromeCanaryDevtoolsIsOpen()) {
-    return true;
-  }
-  return false;
+export function addListener(listener: Listener) {
+  defaultDetector.addListener(listener);
 }
-
-function detectLoop() {
-  const devtoolsCurrentStatus = devtoolsIsOpen();
-  if (devtoolsStatus != devtoolsCurrentStatus) {
-    emitDevtoolsStatusChange((devtoolsStatus = devtoolsCurrentStatus));
-  }
-  if (detectDelay > 0) {
-    timer = setTimeout(detectLoop, detectDelay);
-  } else {
-    stop();
-  }
+export function removeListener(listener: Listener) {
+  defaultDetector.removeListener(listener);
 }
-
-export { Listener, addListener, removeListener } from './listeners';
-
-export function setDetectDelay(value: number) {
-  detectDelay = value;
-}
-
-export function lanuch() {
-  if (detectDelay <= 0) {
-    setDetectDelay(500);
-  }
-  if (detectLoopStoped) {
-    detectLoopStoped = false;
-    detectLoop();
-  }
-}
-
-export function stop() {
-  detectLoopStoped = true;
-  clearTimeout(timer);
-}
-
 export function isLanuch() {
-  return !detectLoopStoped;
+  return defaultDetector.isLanuch();
 }
+export function stop() {
+  defaultDetector.stop();
+}
+export function lanuch() {
+  defaultDetector.lanuch();
+}
+
+export { DevtoolsChecker } from './devtools-checker/devtools-checker';
+export { default as consoleChecker } from './devtools-checker/console-checker';
+export {
+  default as devtoolsDockedChecker
+} from './devtools-checker/docked-checker';
+export { Detector, Listener } from './detector';
