@@ -8,12 +8,12 @@ let isOpen = false;
 Object.defineProperty(ele, 'id', {
   get() {
     isOpen = true;
-    return '';
+    return ieEdgeChecker.name;
   },
   configurable: true
 });
 
-const IeEdgeChecker: DevtoolsChecker = {
+const ieEdgeChecker: DevtoolsChecker = {
   name: 'ie-edge-checker',
   async getDevtoolsDetail() {
     isOpen = false;
@@ -25,8 +25,8 @@ const IeEdgeChecker: DevtoolsChecker = {
     };
   },
   async skip() {
-    return !(isEdge || isIE);
+    return !(isIE() || isEdge());
   }
 };
 
-export default IeEdgeChecker;
+export default ieEdgeChecker;

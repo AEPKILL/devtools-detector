@@ -1,3 +1,4 @@
+import { isWebkit } from '../../utils/browser';
 import { clear, table } from '../../utils/console';
 import { DevtoolsChecker } from '../devtools-checker';
 
@@ -6,11 +7,11 @@ let isOpen = false;
 
 reg.toString = () => {
   isOpen = true;
-  return '';
+  return chromeChecker.name;
 };
 
 const chromeChecker: DevtoolsChecker = {
-  name: 'chrome-checker',
+  name: 'webkit-checker',
   async getDevtoolsDetail() {
     isOpen = false;
     table({ dep: { reg } });
@@ -19,6 +20,9 @@ const chromeChecker: DevtoolsChecker = {
       isOpen,
       checkerName: this.name
     };
+  },
+  async skip() {
+    return !isWebkit();
   }
 };
 

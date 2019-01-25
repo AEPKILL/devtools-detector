@@ -8,6 +8,7 @@ export interface DetectorOptions {
   checkers: DevtoolsChecker[];
 }
 export type Listener = (isOpen: boolean, detail?: DevtoolsDetail) => void;
+
 export class Detector {
   private readonly _checker: DevtoolsChecker;
   private _listeners: Listener[] = [];
@@ -28,8 +29,10 @@ export class Detector {
     }
   }
   stop() {
-    this._detectLoopStoped = true;
-    clearTimeout(this._timer);
+    if (!this._detectLoopStoped) {
+      this._detectLoopStoped = true;
+      clearTimeout(this._timer);
+    }
   }
   isLanuch() {
     return !this._detectLoopStoped;

@@ -1,11 +1,11 @@
 import checkerGroup from '../checker-group';
 import { DevtoolsChecker } from '../devtools-checker';
-import chromeChecker from './chrome';
 import firefoxChecker from './firefox';
 import ieEdgeChecker from './ie-edge';
+import webkitChecker from './webkit';
 
 const consoleChecker: DevtoolsChecker = checkerGroup(
-  [firefoxChecker, ieEdgeChecker, chromeChecker],
+  [firefoxChecker, ieEdgeChecker, webkitChecker],
   'console-checker'
 );
 

@@ -18,12 +18,13 @@
         color: brown;
       }
     </style>
+    <script src="./promise-polyfill.js"></script>
+    <script src="../lib/devtools-detector.js"></script>
   </head>
 
   <body>
     <div id="text">devtools status: close</div>
     <div id="checker"></div>
-    <script src="../lib/devtools-detector.js"></script>
     <script>
       devtoolsDetector.addListener(function(isOpen, detail) {
         if (isOpen) {

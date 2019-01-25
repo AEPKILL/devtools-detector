@@ -1,3 +1,4 @@
+import { isInCorsIfram } from '../utils/context';
 import { DevtoolsChecker } from './devtools-checker';
 
 declare global {
@@ -13,15 +14,16 @@ declare global {
 const firebugChecker: DevtoolsChecker = {
   name: 'firebug-checker',
   async getDevtoolsDetail() {
+    const top = window.top;
     const isOpen =
-      window.Firebug &&
-      window.Firebug.chrome &&
-      window.Firebug.chrome.isInitialized;
+      top.Firebug && top.Firebug.chrome && top.Firebug.chrome.isInitialized;
     return {
       isOpen,
-      checkerName: this.name,
-      directReturn: true
+      checkerName: this.name
     };
+  },
+  async skip() {
+    return isInCorsIfram();
   }
 };
 

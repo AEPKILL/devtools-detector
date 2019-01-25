@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
-    "outDir": ".",
     "declaration": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
     "module": "es6",
     "target": "es5",
-    "jsx": "react",
     "sourceMap": true,
     "strict": true,
     "lib": [

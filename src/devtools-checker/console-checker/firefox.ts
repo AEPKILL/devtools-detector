@@ -7,7 +7,7 @@ let isOpen = false;
 
 reg.toString = () => {
   isOpen = true;
-  return '';
+  return firefoxChecker.name;
 };
 
 const firefoxChecker: DevtoolsChecker = {
@@ -23,7 +23,7 @@ const firefoxChecker: DevtoolsChecker = {
     };
   },
   async skip() {
-    return !isFirefox;
+    return !isFirefox();
   }
 };
 
