@@ -24,8 +24,11 @@ export function lanuch() {
 }
 
 export { DevtoolsChecker } from './devtools-checker/devtools-checker';
+
 export { default as consoleChecker } from './devtools-checker/console-checker';
 export {
   default as debuggerChecker
 } from './devtools-checker/debugger-checker';
+export { default as firebugChecker } from './devtools-checker/firebug-checker';
+
 export { Detector, Listener } from './detector';

@@ -17,8 +17,8 @@ document.body.appendChild(view);
 
 // 1. add listener
 addListener(
-  status =>
-    (view.innerText = status
+  isOpen =>
+    (view.innerText = isOpen
       ? 'devtools status: open'
       : 'devtools status: close')
 );
@@ -33,8 +33,8 @@ require(['devtools-detector'], function(devtoolsDetector) {
   var view = document.createElement('div');
   document.body.appendChild(view);
 
-  devtoolsDetector.addListener(function(status) {
-    view.innerText = status
+  devtoolsDetector.addListener(function(isOpen) {
+    view.innerText = isOpen
       ? 'devtools status: open'
       : 'devtools status: close';
   });
@@ -50,10 +50,10 @@ require(['devtools-detector'], function(devtoolsDetector) {
   var view = document.createElement('div');
   document.body.appendChild(view);
 
-  devtoolsDetector.addListener(function (status) {
-    view.innerText = status
+  devtoolsDetector.addListener(function(isOpen) {
+    view.innerText = isOpen
       ? 'devtools status: open'
-      : 'devtools status: close'
+      : 'devtools status: close';
   });
   devtoolsDetector.lanuch();
 </script>
@@ -61,32 +61,48 @@ require(['devtools-detector'], function(devtoolsDetector) {
 
 ## Support
 
-* IE9+
-* Edge
-* Chrome
-* Firefox
-* Safari
-* Opera
+- IE9+
+- Edge
+- Chrome
+- Firefox
+- Safari
+- Opera
 
-## API
+## Type & API
 
-* lanuch()
+- DevtoolsDetail
+
+```typescript
+interface DevtoolsDetail {
+  isOpen: boolean;
+  checkerName: string;
+  directReturn?: boolean;
+}
+```
+
+- Listener
+
+```typescript
+type Listener = (isOpen: boolean, detail?: DevtoolsDetail) => void;
+```
+
+- lanuch()
 
   lanuch detect
 
-* isLanuch()
+- isLanuch()
 
   if detect is lanuch then returen `true` , else return `false`
 
-* stop()
+- stop()
 
   stop detect
 
-* addListener(listener)
+- addListener(listener: Listener)
 
-* removeListener(listener)
+- removeListener(listener: Listener)
 
-* setDetectDelay(value)
+- setDetectDelay(value: number)
 
   set detect loop delay time , if **value =< 0** then stop detect.
 
@@ -101,7 +117,7 @@ require(['devtools-detector'], function(devtoolsDetector) {
 >
 > [zswang/**jdetects**](https://github.com/zswang/jdetects)
 >
-> [前端开发中如何在JS文件中检测用户浏览器是否打开了调试面板](https://www.zhihu.com/question/24188524)
+> [前端开发中如何在 JS 文件中检测用户浏览器是否打开了调试面板](https://www.zhihu.com/question/24188524)
 
 ## License
 

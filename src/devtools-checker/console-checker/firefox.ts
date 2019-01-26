@@ -1,5 +1,6 @@
 import { isFirefox } from '../../utils/browser';
 import { clear, log } from '../../utils/console';
+import debuggerChecker from '../debugger-checker';
 import { DevtoolsChecker } from '../devtools-checker';
 
 const reg = / /;
@@ -16,6 +17,11 @@ const firefoxChecker: DevtoolsChecker = {
     isOpen = false;
     log(reg);
     clear();
+    if (isOpen === false) {
+      const detail = await debuggerChecker.getDevtoolsDetail();
+      detail.directReturn = true;
+      return detail;
+    }
     return {
       isOpen,
       checkerName: this.name,
