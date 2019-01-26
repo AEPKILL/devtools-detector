@@ -61,7 +61,7 @@ require(['devtools-detector'], function(devtoolsDetector) {
 
 ## Support
 
-- IE9+
+- IE9+ (required Promise polyfill)
 - Edge
 - Chrome
 - Firefox
