@@ -7,10 +7,10 @@ let isOpen = false;
 
 reg.toString = () => {
   isOpen = true;
-  return chromeChecker.name;
+  return webkitChecker.name;
 };
 
-const chromeChecker: DevtoolsChecker = {
+const webkitChecker: DevtoolsChecker = {
   name: 'webkit-checker',
   async getDevtoolsDetail() {
     isOpen = false;
@@ -26,4 +26,4 @@ const chromeChecker: DevtoolsChecker = {
   }
 };
 
-export default chromeChecker;
+export default webkitChecker;
