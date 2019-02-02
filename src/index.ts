@@ -22,7 +22,9 @@ export function stop() {
 export function lanuch() {
   defaultDetector.lanuch();
 }
-
+export function setDetectDelay(time: number) {
+  defaultDetector.setDetectDelay(time);
+}
 export { DevtoolsChecker } from './devtools-checker/devtools-checker';
 
 export { default as consoleChecker } from './devtools-checker/console-checker';

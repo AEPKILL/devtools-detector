@@ -46,7 +46,8 @@ export class Detector {
   removeListener(listener: Listener) {
     this._listeners = this._listeners.filter(value => value !== listener);
   }
-  emit(value: DevtoolsDetail) {
+
+  private _broadcast(value: DevtoolsDetail) {
     for (const listener of this._listeners) {
       try {
         listener(value.isOpen, value);
@@ -55,12 +56,11 @@ export class Detector {
       }
     }
   }
-
   private async _detectLoop() {
     const detail = await this._checker.getDevtoolsDetail();
     if (detail.isOpen != this._isOpen) {
       this._isOpen = detail.isOpen;
-      this.emit(detail);
+      this._broadcast(detail);
     }
     if (this._detectLoopDelay > 0) {
       this._timer = setTimeout(() => this._detectLoop(), this._detectLoopDelay);

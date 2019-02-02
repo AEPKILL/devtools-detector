@@ -8,6 +8,7 @@ let isOpen = false;
 
 reg.toString = () => {
   isOpen = true;
+  alert(23333);
   return firefoxChecker.name;
 };
 
@@ -15,7 +16,7 @@ const firefoxChecker: DevtoolsChecker = {
   name: 'firefox-checker',
   async getDevtoolsDetail() {
     isOpen = false;
-    log(reg);
+    log('%c23333', reg);
     clear();
     if (isOpen === false) {
       const detail = await debuggerChecker.getDevtoolsDetail();
