@@ -1,4 +1,4 @@
-import { isInCorsIfram } from '../utils/context';
+import { isInCorsIframe } from '../utils/context';
 import { DevtoolsChecker } from './devtools-checker';
 
 declare global {
@@ -23,7 +23,7 @@ const firebugChecker: DevtoolsChecker = {
     };
   },
   async skip() {
-    return isInCorsIfram();
+    return isInCorsIframe();
   }
 };
 
