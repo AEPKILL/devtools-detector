@@ -15,8 +15,13 @@ const firebugChecker: DevtoolsChecker = {
   name: 'firebug-checker',
   async getDevtoolsDetail() {
     const top = window.top;
-    const isOpen =
-      top.Firebug && top.Firebug.chrome && top.Firebug.chrome.isInitialized;
+    let isOpen: boolean = false;
+    try {
+      isOpen =
+        top.Firebug && top.Firebug.chrome && top.Firebug.chrome.isInitialized;
+    } catch {
+      /** nothing todo */
+    }
     return {
       isOpen,
       checkerName: this.name
