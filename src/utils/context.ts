@@ -1,7 +1,7 @@
 import layzFunction from './lazy-function';
 export const isInIframe = layzFunction(() => window.top !== window);
 export const isInCorsIframe = layzFunction(() => {
-  if (!isInIframe) {
+  if (!isInIframe()) {
     return false;
   }
   try {
