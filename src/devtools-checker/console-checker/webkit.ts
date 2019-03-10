@@ -1,26 +1,19 @@
 import { isWebkit } from '../../utils/browser';
-import { clear, table } from '../../utils/console';
+import checkerGroup from '../checker-group';
 import { DevtoolsChecker } from '../devtools-checker';
-
-const reg = / /;
-let isOpen = false;
-
-reg.toString = () => {
-  isOpen = true;
-  return webkitChecker.name;
-};
+import depRegToStringChecker from './common/dep-reg-to-string';
+import elementIdChecker from './common/element-id';
+import functionToStringChecker from './common/function-to-string';
+import regToStringChecker from './common/reg-to-string';
 
 const webkitChecker: DevtoolsChecker = {
+  ...checkerGroup([
+    elementIdChecker,
+    functionToStringChecker,
+    regToStringChecker,
+    depRegToStringChecker
+  ]),
   name: 'webkit-checker',
-  async getDevtoolsDetail() {
-    isOpen = false;
-    table({ dep: { reg } });
-    clear();
-    return {
-      isOpen,
-      checkerName: this.name
-    };
-  },
   async skip() {
     return !isWebkit();
   }

@@ -1,6 +1,5 @@
-import { isWebkit } from '../../utils/browser';
-import { clear, log } from '../../utils/console';
-import { DevtoolsChecker } from '../devtools-checker';
+import { clear, log } from '../../../utils/console';
+import { DevtoolsChecker } from '../../devtools-checker';
 
 function devtoolsTestFunction() {
   // nothing todo
@@ -12,8 +11,8 @@ devtoolsTestFunction.toString = () => {
   count++;
 };
 
-const webkit2Checker: DevtoolsChecker = {
-  name: 'webkit2-checker',
+const functionToStringChecker: DevtoolsChecker = {
+  name: 'function-to-string-checker',
   async getDevtoolsDetail() {
     count = 0;
     log(devtoolsTestFunction);
@@ -22,10 +21,7 @@ const webkit2Checker: DevtoolsChecker = {
       isOpen: count === 2,
       checkerName: this.name
     };
-  },
-  async skip() {
-    return !isWebkit();
   }
 };
 
-export default webkit2Checker;
+export default functionToStringChecker;

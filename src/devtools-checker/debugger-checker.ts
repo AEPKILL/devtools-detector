@@ -14,7 +14,7 @@ const debuggerChecker: DevtoolsChecker = {
     // tslint:disable-next-line:no-empty only-arrow-functions
     (function() {}.constructor('debugger')());
     return {
-      isOpen: now() - startTime > 500,
+      isOpen: now() - startTime > 100,
       checkerName: this.name
     };
   }
