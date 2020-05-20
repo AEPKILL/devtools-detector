@@ -11,7 +11,7 @@
 ### ES6 & TypeScript
 
 ```javascript
-import { addListener, lanuch } from 'devtools-detector';
+import { addListener, launch } from 'devtools-detector';
 const view = document.createElement('div');
 document.body.appendChild(view);
 
@@ -22,8 +22,8 @@ addListener(
       ? 'devtools status: open'
       : 'devtools status: close')
 );
-// 2. lanuch detect
-lanuch();
+// 2. launch detect
+launch();
 ```
 
 ### AMD
@@ -38,7 +38,7 @@ require(['devtools-detector'], function(devtoolsDetector) {
       ? 'devtools status: open'
       : 'devtools status: close';
   });
-  devtoolsDetector.lanuch();
+  devtoolsDetector.launch();
 });
 ```
 
@@ -55,7 +55,7 @@ require(['devtools-detector'], function(devtoolsDetector) {
       ? 'devtools status: open'
       : 'devtools status: close';
   });
-  devtoolsDetector.lanuch();
+  devtoolsDetector.launch();
 </script>
 ```
 
@@ -86,13 +86,13 @@ interface DevtoolsDetail {
 type Listener = (isOpen: boolean, detail?: DevtoolsDetail) => void;
 ```
 
-- lanuch()
+- launch()
 
-  lanuch detect
+  launch detect
 
-- isLanuch()
+- isLaunch()
 
-  if detect is lanuch then returen `true` , else return `false`
+  if detect is launch then returen `true` , else return `false`
 
 - stop()
 

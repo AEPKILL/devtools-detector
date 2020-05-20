@@ -20,7 +20,7 @@ const firebugChecker: DevtoolsChecker = {
       isOpen =
         top.Firebug && top.Firebug.chrome && top.Firebug.chrome.isInitialized;
     } catch {
-      /** nothing todo */
+      /** nothing to do */
     }
     return {
       isOpen,

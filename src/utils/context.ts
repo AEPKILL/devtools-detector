@@ -1,6 +1,6 @@
-import layzFunction from './lazy-function';
-export const isInIframe = layzFunction(() => window.top !== window);
-export const isInCorsIframe = layzFunction(() => {
+import lazyFunction from './lazy-function';
+export const isInIframe = lazyFunction(() => window.top !== window);
+export const isInCorsIframe = lazyFunction(() => {
   if (!isInIframe()) {
     return false;
   }

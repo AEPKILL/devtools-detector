@@ -1,7 +1,7 @@
 import checkerGroup from './devtools-checker/checker-group';
 import {
   DevtoolsChecker,
-  DevtoolsDetail
+  DevtoolsDetail,
 } from './devtools-checker/devtools-checker';
 
 export interface DetectorOptions {
@@ -13,29 +13,30 @@ export class Detector {
   private readonly _checker: DevtoolsChecker;
   private _listeners: Listener[] = [];
   private _isOpen = false;
-  private _detectLoopStoped = true;
+  private _detectLoopStopped = true;
   private _detectLoopDelay = 500;
   private _timer!: number;
   constructor({ checkers }: DetectorOptions) {
     this._checker = checkerGroup(checkers);
   }
-  lanuch() {
+
+  launch() {
     if (this._detectLoopDelay <= 0) {
       this.setDetectDelay(500);
     }
-    if (this._detectLoopStoped) {
-      this._detectLoopStoped = false;
+    if (this._detectLoopStopped) {
+      this._detectLoopStopped = false;
       this._detectLoop();
     }
   }
   stop() {
-    if (!this._detectLoopStoped) {
-      this._detectLoopStoped = true;
+    if (!this._detectLoopStopped) {
+      this._detectLoopStopped = true;
       clearTimeout(this._timer);
     }
   }
-  isLanuch() {
-    return !this._detectLoopStoped;
+  isLaunch() {
+    return !this._detectLoopStopped;
   }
   setDetectDelay(value: number) {
     this._detectLoopDelay = value;
@@ -44,7 +45,15 @@ export class Detector {
     this._listeners.push(listener);
   }
   removeListener(listener: Listener) {
-    this._listeners = this._listeners.filter(value => value !== listener);
+    this._listeners = this._listeners.filter((value) => value !== listener);
+  }
+
+  // 下面两个方法拼写错误，但是为了兼容依然保留
+  lanuch() {
+    this.launch();
+  }
+  isLanuch() {
+    return this.isLaunch();
   }
 
   private _broadcast(value: DevtoolsDetail) {
