@@ -92,7 +92,7 @@ type Listener = (isOpen: boolean, detail?: DevtoolsDetail) => void;
 
 - isLaunch()
 
-  if detect is launch then returen `true` , else return `false`
+  if detect is launched then return `true`, else return `false`
 
 - stop()
 
@@ -104,12 +104,12 @@ type Listener = (isOpen: boolean, detail?: DevtoolsDetail) => void;
 
 - setDetectDelay(value: number)
 
-  set detect loop delay time , if **value =< 0** then stop detect.
+  Set detect loop delay time, if **value =< 0** then stop detecting.
 
 ## Caveats
 
 1. In Firefox, if DevTools is undocked, detected only when switching to the **Console Panel**.
-2. Make sure `devtools-detector` is the frist one to load
+2. Make sure `devtools-detector` is the first one to load
 
 ## Reference
 
