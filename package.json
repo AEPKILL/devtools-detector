@@ -7,7 +7,6 @@
   "scripts": {
     "build": "webpack --watch",
     "example": "http-server -o",
-    "update-demo": "cp ./lib/devtools-detector.js /e/blog/aepkill.github.io/demos/devtools-detector/devtools-detector.js&&git add .&&git commit -m \"feat(demo): update devtools-detector\"&&git push"
   },
   "repository": {
     "type": "git",
