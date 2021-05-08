@@ -17,6 +17,10 @@
         margin-top: 10px;
         color: brown;
       }
+
+      #ua {
+        margin-top: 10px;
+      }
     </style>
     <script src="./promise-polyfill.js"></script>
     <script src="../lib/devtools-detector.js"></script>
@@ -25,8 +29,9 @@
   <body>
     <div id="text">devtools status: close</div>
     <div id="checker"></div>
+    <div id="ua"></div>
     <script>
-      devtoolsDetector.addListener(function(isOpen, detail) {
+      devtoolsDetector.addListener(function (isOpen, detail) {
         if (isOpen) {
           text.innerText = 'devtools status: open';
           checker.innerText = detail.checkerName;
@@ -36,6 +41,8 @@
         }
       });
       devtoolsDetector.launch();
+
+      document.getElementById('ua').innerText = 'UserAgent: ' + navigator.userAgent;
     </script>
   </body>
 </html>
