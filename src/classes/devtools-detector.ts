@@ -66,7 +66,6 @@ export class DevtoolsDetector {
     let checkerName = '';
 
     for (const checker of this._checkers) {
-      console.log(checker.name);
       const isEnable = await checker.isEnable();
       if (isEnable) {
         checkerName = checker.name;
