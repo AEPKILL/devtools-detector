@@ -1,7 +1,8 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
-import { isFirefox, isWebkit } from '../shared/browser-info';
+import { isFirefox, isWebkit, isChrome } from '../shared/browser-info';
 import { clear, log } from '../shared/console';
 import { isMobile } from '../shared/platform-info';
+import { isIpad, isIphone } from '../shared/system-info';
 
 function devtoolsTestFunction() {
   // nothing todo
@@ -30,8 +31,8 @@ export const functionToStringChecker: DevtoolsStatusChecker = {
       return false;
     }
 
-    // 不支持移动端 Webkit
-    if (isWebkit && isMobile) {
+    // ipad & iphone 上的 chrome 始终为 true
+    if ((isIpad || isIphone) && isChrome) {
       return false;
     }
 

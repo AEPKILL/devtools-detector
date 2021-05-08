@@ -15,3 +15,5 @@ export const isEdge = /edge/i.test(ua);
 
 /** webkit */
 export const isWebkit = /webkit/i.test(ua) && !isEdge;
+
+export const isChrome = /chrome/i.test(ua);
