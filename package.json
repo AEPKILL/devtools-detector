@@ -6,7 +6,7 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "webpack --watch",
-    "example": "http-server -o",
+    "example": "http-server -o"
   },
   "repository": {
     "type": "git",
