@@ -76,14 +76,13 @@ require(['devtools-detector'], function(devtoolsDetector) {
 interface DevtoolsDetail {
   isOpen: boolean;
   checkerName: string;
-  directReturn?: boolean;
 }
 ```
 
 - Listener
 
 ```typescript
-type Listener = (isOpen: boolean, detail?: DevtoolsDetail) => void;
+type DevtoolsDetectorListener = (isOpen: boolean, detail?: DevtoolsDetail) => void;
 ```
 
 - launch()
@@ -98,9 +97,9 @@ type Listener = (isOpen: boolean, detail?: DevtoolsDetail) => void;
 
   stop detect
 
-- addListener(listener: Listener)
+- addListener(listener: DevtoolsDetectorListener)
 
-- removeListener(listener: Listener)
+- removeListener(listener: DevtoolsDetectorListener)
 
 - setDetectDelay(value: number)
 

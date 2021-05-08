@@ -1,9 +1,4 @@
-import { isEdge, isIE } from './browser';
-
-// tslint:disable:no-any no-empty
-const FUNCTION_TYPE_STRING = typeof cacheConsoleMethod;
-
-const isFunction = (fn: any) => typeof fn === FUNCTION_TYPE_STRING;
+import { isEdge, isIE } from './browser-info';
 
 /**
  * 缓存 console.log 等方法，防止第三方代码 hook console.log 等方法
@@ -12,16 +7,18 @@ const isFunction = (fn: any) => typeof fn === FUNCTION_TYPE_STRING;
  */
 function cacheConsoleMethod<K extends keyof Console>(name: K): Console[K] {
   if (console) {
-    const method = console[name];
-    if (isFunction(method)) {
-      if (isIE || isEdge) {
+    if (isIE || isEdge) {
+      // IE 没有 console.table
+      if (name === 'log' || name === 'clear') {
         return (...args: any[]) => {
           console[name](...args);
         };
       }
+    } else {
       return console[name];
     }
   }
+
   return (..._args: any[]) => {};
 }
 
@@ -30,5 +27,3 @@ export const log = cacheConsoleMethod('log');
 export const table = cacheConsoleMethod('table');
 
 export const clear = cacheConsoleMethod('clear');
-
-// tslint:enable:no-any no-empty

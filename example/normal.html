@@ -6,15 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>devtools-detector demo</title>
     <style>
-      #text,
-      #checker {
-        font-size: 30px;
-        margin-top: 50px;
+      .line {
+        margin-top: 10px;
         text-align: center;
       }
+
+      #status {
+        margin-top: 50;
+        font-size: 30px;
+      }
+
       #checker {
-        font-size: 16px;
-        margin-top: 10px;
         color: brown;
       }
     </style>
@@ -23,19 +25,29 @@
   </head>
 
   <body>
-    <div id="text">devtools status: close</div>
-    <div id="checker"></div>
+    <div id="status" class="line">devtools status: close</div>
+    <div id="checker" class="line"></div>
+    <div id="ua" class="line"></div>
+    <div id="versionMap" class="line"></div>
+    <div>2333</div>
     <script>
-      devtoolsDetector.addListener(function(isOpen, detail) {
+      devtoolsDetector.addListener(function (isOpen, detail) {
         if (isOpen) {
-          text.innerText = 'devtools status: open';
+          status.innerText = 'devtools status: open';
           checker.innerText = detail.checkerName;
         } else {
-          text.innerText = 'devtools status: close';
+          status.innerText = 'devtools status: close';
           checker.innerText = '';
         }
       });
       devtoolsDetector.launch();
+
+      ua.innerText = 'UserAgent: ' + navigator.userAgent;
+      versionMap.innerText = Object.keys(devtoolsDetector.versionMap)
+        .map(function (key) {
+          return key + ' : ' + devtoolsDetector.versionMap[key];
+        })
+        .join('\n');
     </script>
   </body>
 </html>
