@@ -31,15 +31,14 @@ export function match(options: MatchOptions = {}): boolean {
 
 export function specificVersionMatch(
   specific: string,
-  firstVersion: string,
-  secondVersion: string,
+  version: string,
   operator: CompareOperator
 ): boolean {
-  const version = versionMap[specific];
+  const specificVersion = versionMap[specific];
 
-  if (version === undefined) {
+  if (specificVersion === undefined) {
     return false;
   }
 
-  return compare(firstVersion, secondVersion, operator);
+  return compare(specificVersion, version, operator);
 }
