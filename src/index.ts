@@ -47,6 +47,8 @@ export { DevtoolsDetail } from './types/devtools-detail.type';
 export { DevtoolsDetectorListener } from './types/devtools-detector-listener.type';
 export { DevtoolsStatusChecker } from './types/devtools-status-checker.type';
 
+export { DevtoolsDetector };
+
 export * from './shared/browser-info';
 export * from './shared/console';
 export * from './shared/platform-info';
