@@ -1,6 +1,7 @@
 import { isEdge, isIE, isFirefox } from '../shared/browser-info';
 import { clear, log } from '../shared/console';
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import { match } from '../shared/utils';
 
 const ele = document.createElement('div');
 let isOpen = false;
@@ -24,11 +25,10 @@ export const elementIdChecker: DevtoolsStatusChecker = {
     return isOpen;
   },
   async isEnable(): Promise<boolean> {
-    // IE & Edge & Firefox 不适用
-    if (isIE || isEdge || isFirefox) {
-      return false;
-    }
-
-    return true;
+    return match({
+      /** 匹配所有浏览器 */
+      includes: [true],
+      excludes: [isIE, isEdge, isFirefox],
+    });
   },
 };

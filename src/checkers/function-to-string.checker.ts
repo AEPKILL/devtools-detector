@@ -1,8 +1,8 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
-import { isFirefox, isWebkit, isChrome } from '../shared/browser-info';
+import { isFirefox, isChrome } from '../shared/browser-info';
 import { clear, log } from '../shared/console';
-import { isMobile } from '../shared/platform-info';
 import { isIpad, isIphone } from '../shared/system-info';
+import { match } from '../shared/utils';
 
 function devtoolsTestFunction() {
   // nothing todo
@@ -27,15 +27,15 @@ export const functionToStringChecker: DevtoolsStatusChecker = {
     return count === 2;
   },
   async isEnable(): Promise<boolean> {
-    if (isFirefox) {
-      return false;
-    }
-
-    // ipad & iphone 上的 chrome 始终为 true
-    if ((isIpad || isIphone) && isChrome) {
-      return false;
-    }
-
-    return true;
+    return match({
+      /** 匹配所有浏览器 */
+      includes: [true],
+      /** 排除 firefox 和  ipad 或 iphone 上的 chrome */
+      excludes: [
+        isFirefox,
+        // ipad 或 iphone 上的 chrome
+        (isIpad || isIphone) && isChrome,
+      ],
+    });
   },
 };

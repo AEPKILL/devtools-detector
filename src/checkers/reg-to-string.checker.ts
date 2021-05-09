@@ -1,6 +1,7 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { clear, log } from '../shared/console';
 import { isWebkit } from '../shared/browser-info';
+import { match } from '../shared/utils';
 
 const reg = / /;
 let isOpen = false;
@@ -21,10 +22,11 @@ export const regToStringChecker: DevtoolsStatusChecker = {
     return isOpen;
   },
   async isEnable(): Promise<boolean> {
-    if (isWebkit) {
-      return false;
-    }
-
-    return true;
+    return match({
+      /** 匹配所有浏览器 */
+      includes: [true],
+      /** 排除 webkit */
+      excludes: [isWebkit],
+    });
   },
 };

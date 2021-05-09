@@ -1,6 +1,7 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { isEdge, isFirefox, isIE } from '../shared/browser-info';
 import { table, clear } from '../shared/console';
+import { match } from '../shared/utils';
 
 const reg = / /;
 let isOpen = false;
@@ -21,10 +22,11 @@ export const depRegToStringChecker: DevtoolsStatusChecker = {
     return isOpen;
   },
   async isEnable(): Promise<boolean> {
-    if (isFirefox || isIE) {
-      return false;
-    }
-
-    return true;
+    return match({
+      /** 匹配所有浏览器 */
+      includes: [true],
+      /** 排除 firefox 和 ie */
+      excludes: [isFirefox, isIE],
+    });
   },
 };
