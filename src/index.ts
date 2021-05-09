@@ -45,6 +45,8 @@ export { DevtoolsStatusChecker } from './types/devtools-status-checker.type';
 
 export { DevtoolsDetector, checkers };
 
+export { match, specificVersionMatch } from './shared/utils';
+
 export * from './shared/browser-info';
 export * from './shared/console';
 export * from './shared/platform-info';
