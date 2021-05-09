@@ -1,6 +1,6 @@
 const ua = navigator.userAgent;
 
-const versions = ua.match(/\w+\/(\d|\.)+\s/gi) || [];
+const versions = ua.match(/\w+\/(\d|\.)+(\s|$)/gi) || [];
 const versionMap: { [key: string]: string } = {};
 
 for (const version of versions) {
