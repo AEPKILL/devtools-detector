@@ -34,8 +34,9 @@ export const isEdge = isInSSR ? false : /edge/i.test(ua)
 export const isWebkit = isInSSR ? false : /webkit/i.test(ua) && !isEdge
 
 /** chrome */
-export const isChrome =
-  typeof window.chrome !== 'undefined' || /chrome/i.test(ua)
+export const isChrome = isInSSR
+  ? false
+  : typeof window.chrome !== 'undefined' || /chrome/i.test(ua)
 
 /** safari */
 export const isSafari = isInSSR
