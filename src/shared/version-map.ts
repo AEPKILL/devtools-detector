@@ -4,14 +4,14 @@
  * 现在暂时还未用到
  */
 
-const ua = navigator.userAgent;
+const ua = typeof window == 'undefined' ? '' : navigator.userAgent
 
-const versions = ua.match(/\w+\/(\d|\.)+(\s|$)/gi) || [];
-const versionMap: { [key: string]: string } = {};
+const versions = ua.match(/\w+\/(\d|\.)+(\s|$)/gi) || []
+const versionMap: { [key: string]: string } = {}
 
 for (const version of versions) {
-  const [versionSpec, versionNumber] = version.split('/');
-  versionMap[versionSpec] = versionNumber;
+  const [versionSpec, versionNumber] = version.split('/')
+  versionMap[versionSpec] = versionNumber
 }
 
-export { versionMap };
+export { versionMap }

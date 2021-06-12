@@ -1,36 +1,45 @@
 declare global {
   interface Window {
     // Chrome
-    chrome?: unknown,
+    chrome?: unknown
     // Firefox
     InstallTrigger?: unknown
     // Safari
     safari?: {
-      pushNotification: () => void;
+      pushNotification: () => void
     }
   }
 }
 
-const ua = navigator.userAgent;
+const isInSSR = typeof window == 'undefined'
+const ua = !isInSSR ? navigator.userAgent : ''
 
 /** firefox */
-export const isFirefox = ('InstallTrigger' in window) || /firefox/i.test(ua);
+export const isFirefox = !isInSSR
+  ? 'InstallTrigger' in window || /firefox/i.test(ua)
+  : false
 
 /** ie */
-export const isIE =
-  // ie 11+
-  /trident/i.test(ua) ||
-  // other ie browser
-  /msie/i.test(ua);
+export const isIE = !isInSSR
+  ? // ie 11+
+    /trident/i.test(ua) ||
+    // other ie browser
+    /msie/i.test(ua)
+  : false
 
 /** edge */
-export const isEdge = /edge/i.test(ua);
+export const isEdge = isInSSR ? false : /edge/i.test(ua)
 
 /** webkit */
-export const isWebkit = /webkit/i.test(ua) && !isEdge;
+export const isWebkit = isInSSR ? false : /webkit/i.test(ua) && !isEdge
 
 /** chrome */
-export const isChrome = typeof window.chrome !== 'undefined' || /chrome/i.test(ua);
+export const isChrome =
+  typeof window.chrome !== 'undefined' || /chrome/i.test(ua)
 
 /** safari */
-export const isSafari = (window.safari?.pushNotification || false).toString() === '[object SafariRemoteNotification]' || /safari/i.test(ua) && !isChrome;
+export const isSafari = isInSSR
+  ? false
+  : (window.safari?.pushNotification || false).toString() ===
+      '[object SafariRemoteNotification]' ||
+    (/safari/i.test(ua) && !isChrome)
