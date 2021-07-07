@@ -44,7 +44,8 @@ export function specificVersionMatch(
 }
 
 declare const global: any;
-export function getGlobalThis(this: typeof globalThis): typeof globalThis {
+
+export function getGlobalThis(this: any): typeof globalThis {
   if (typeof self !== 'undefined') {
     return self;
   }
@@ -55,5 +56,5 @@ export function getGlobalThis(this: typeof globalThis): typeof globalThis {
     return global;
   }
 
-  return this || {};
+  return this;
 }

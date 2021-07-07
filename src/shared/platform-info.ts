@@ -1,3 +1,3 @@
-import { ua } from "./browser-context";
+import { userAgent } from "./browser-context";
 
-export const isMobile = /mobile/i.test(ua);
+export const isMobile = /mobile/i.test(userAgent);
