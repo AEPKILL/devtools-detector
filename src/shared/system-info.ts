@@ -1,4 +1,4 @@
-const ua = navigator.userAgent;
+import { ua } from './browser-context';
 
 export const isIpad = /ipad/i.test(ua);
 

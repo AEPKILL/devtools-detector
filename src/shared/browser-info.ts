@@ -1,4 +1,4 @@
-const ua = navigator.userAgent;
+import { ua } from './browser-context';
 
 /** firefox */
 export const isFirefox = /firefox/i.test(ua);

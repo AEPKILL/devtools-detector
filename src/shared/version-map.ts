@@ -3,8 +3,7 @@
  * version-map 方便以后根据浏览器各种特征的版本选择 checker
  * 现在暂时还未用到
  */
-
-const ua = navigator.userAgent;
+import { ua } from './browser-context';
 
 const versions = ua.match(/\w+\/(\d|\.)+(\s|$)/gi) || [];
 const versionMap: { [key: string]: string } = {};

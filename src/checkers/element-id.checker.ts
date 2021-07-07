@@ -2,8 +2,9 @@ import { isEdge, isIE, isFirefox } from '../shared/browser-info';
 import { clear, log } from '../shared/console';
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { match } from '../shared/utils';
+import { createElement } from '../shared/browser-context';
 
-const ele = document.createElement('div');
+const ele = createElement('div');
 let isOpen = false;
 
 Object.defineProperty(ele, 'id', {
