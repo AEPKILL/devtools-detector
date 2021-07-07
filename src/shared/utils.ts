@@ -42,3 +42,18 @@ export function specificVersionMatch(
 
   return compare(specificVersion, version, operator);
 }
+
+declare const global: any;
+export function getGlobalThis(this: typeof globalThis): typeof globalThis {
+  if (typeof self !== 'undefined') {
+    return self;
+  }
+  if (typeof window !== 'undefined') {
+    return window;
+  }
+  if (typeof global !== 'undefined') {
+    return global;
+  }
+
+  return this || {};
+}

@@ -1,4 +1,7 @@
 import { FnArguments } from '../types/utils.type';
+import { getGlobalThis } from './utils';
+
+const globalThis = getGlobalThis.call(null as any);
 
 export const ua = (globalThis.navigator || {}).userAgent || '';
 
