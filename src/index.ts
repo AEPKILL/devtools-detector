@@ -9,6 +9,7 @@ const defaultDetector = new DevtoolsDetector({
     checkers.regToStringChecker,
     checkers.functionToStringChecker,
     checkers.depRegToStringChecker,
+    checkers.dateToStringChecker,
     checkers.debuggerChecker,
   ],
 });
