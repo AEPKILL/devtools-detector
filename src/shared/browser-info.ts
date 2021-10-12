@@ -36,7 +36,9 @@ export const isWebkit = /webkit/i.test(userAgent) && !isEdge;
 /** chrome */
 export const isChrome =
   typeof globalThis?.window?.chrome !== 'undefined' ||
-  /chrome/i.test(userAgent);
+  /chrome/i.test(userAgent) ||
+  // chrome iOS
+  /CriOS/i.test(userAgent);
 
 /** safari */
 export const isSafari =
