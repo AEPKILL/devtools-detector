@@ -2,6 +2,7 @@ import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { isChrome } from '../shared/browser-info';
 import { clear, log } from '../shared/console';
 import { match } from '../shared/utils';
+import { isIpad, isIphone } from '..';
 
 var date = new Date();
 
@@ -32,7 +33,7 @@ export const dateToStringChecker: DevtoolsStatusChecker = {
       excludes: [
         // isFirefox,
         // ipad 或 iphone 上的 chrome
-        // (isIpad || isIphone) && isChrome,
+        (isIpad || isIphone) && isChrome,
       ],
     });
   },
