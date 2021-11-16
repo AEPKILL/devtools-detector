@@ -1,9 +1,9 @@
 import { userAgent } from "./browser-context";
 
 
-export const isIpad = /ipad/i.test(userAgent);
-
 export const isMac = /macintosh/i.test(userAgent);
+
+export const isIpad = /ipad/i.test(userAgent) || (isMac && navigator.maxTouchPoints > 1);
 
 export const isIphone = /iphone/i.test(userAgent);
 
