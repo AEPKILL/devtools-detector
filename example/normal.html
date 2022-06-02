@@ -20,8 +20,6 @@
         color: brown;
       }
     </style>
-    <script src="./promise-polyfill.js"></script>
-    <script src="../lib/devtools-detector.js"></script>
   </head>
 
   <body>
@@ -29,6 +27,10 @@
     <div id="checker" class="line"></div>
     <div id="ua" class="line"></div>
     <div id="versionMap" class="line"></div>
+    <div id="debug-info" class="line"></div>
+
+    <script src="./promise-polyfill.js"></script>
+    <script src="../lib/devtools-detector.js"></script>
     <script>
       const status = document.getElementById('status');
       const checker = document.getElementById('checker');

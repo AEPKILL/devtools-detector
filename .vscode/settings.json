@@ -3,5 +3,6 @@
     "iphone",
     "ipad",
     "devtools"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

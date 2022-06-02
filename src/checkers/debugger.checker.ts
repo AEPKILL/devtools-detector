@@ -1,12 +1,5 @@
+import { now } from '../shared/utils';
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
-
-function now() {
-  if (performance) {
-    return performance.now();
-  } else {
-    return Date.now();
-  }
-}
 
 export const debuggerChecker: DevtoolsStatusChecker = {
   name: 'debugger-checker',

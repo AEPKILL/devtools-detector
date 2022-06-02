@@ -11,7 +11,7 @@ function cacheConsoleMethod<K extends keyof Console>(name: K): Console[K] {
       // IE 没有 console.table
       if (name === 'log' || name === 'clear') {
         return (...args: any[]) => {
-          console[name](...args);
+          console[name].apply(console, args);
         };
       }
     } else {
@@ -27,3 +27,4 @@ export const log = cacheConsoleMethod('log');
 export const table = cacheConsoleMethod('table');
 
 export const clear = cacheConsoleMethod('clear');
+

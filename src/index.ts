@@ -5,12 +5,13 @@ import * as checkers from './checkers/checkers';
 const defaultDetector = new DevtoolsDetector({
   // 会按照 checker 的顺序执行检查
   checkers: [
-    checkers.elementIdChecker,
-    checkers.regToStringChecker,
-    checkers.functionToStringChecker,
-    checkers.depRegToStringChecker,
-    checkers.dateToStringChecker,
-    checkers.debuggerChecker,
+    // checkers.elementIdChecker,
+    // checkers.regToStringChecker,
+    // checkers.functionToStringChecker,
+    // checkers.depRegToStringChecker,
+    // checkers.dateToStringChecker,
+    checkers.performanceChecker,
+    // checkers.debuggerChecker,
   ],
 });
 
