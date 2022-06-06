@@ -4,7 +4,11 @@ import { clear, log, table } from '../shared/console';
 import { match, now } from '../shared/utils';
 
 const element = document.createElement('div');
-const bigObject = Array.from({ length: 50 }).fill(element);
+const bigObject: HTMLElement[] = [];
+
+for (let i = 0; i < 50; i++) {
+  bigObject.push(element);
+}
 
 function calcTablePrintTime(): number {
   const start = now();
