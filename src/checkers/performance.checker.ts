@@ -33,7 +33,7 @@ export const performanceChecker: DevtoolsStatusChecker = {
 
     if (tablePrintTime === 0) return false;
 
-    return tablePrintTime - maxPrintTime > maxPrintTime * 10;
+    return tablePrintTime > maxPrintTime * 10;
   },
   async isEnable(): Promise<boolean> {
     return match({
