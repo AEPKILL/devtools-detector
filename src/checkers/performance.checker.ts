@@ -27,6 +27,7 @@ function calcLogPrintTime(): number {
 }
 
 let maxPrintTime = Math.max(calcLogPrintTime(), 1 / 1000);
+clear();
 export const performanceChecker: DevtoolsStatusChecker = {
   name: 'performance',
   async isOpen(): Promise<boolean> {
