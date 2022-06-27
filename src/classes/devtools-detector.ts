@@ -68,7 +68,6 @@ export class DevtoolsDetector {
     for (const checker of this._checkers) {
       const isEnable = await checker.isEnable();
 
-      console.log('isEnable', isEnable);
       if (isEnable) {
         checkerName = checker.name;
         isOpen = await checker.isOpen();
@@ -95,4 +94,3 @@ export class DevtoolsDetector {
     }
   }
 }
-
