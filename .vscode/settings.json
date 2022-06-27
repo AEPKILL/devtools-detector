@@ -1,8 +1,9 @@
 {
   "cSpell.words": [
-    "iphone",
+    "devtools",
+    "eruda",
     "ipad",
-    "devtools"
+    "iphone"
   ],
   "typescript.tsdk": "node_modules/typescript/lib"
 }

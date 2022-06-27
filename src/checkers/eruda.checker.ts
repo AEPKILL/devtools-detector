@@ -11,7 +11,7 @@ declare global {
 }
 
 export const erudaChecker: DevtoolsStatusChecker = {
-  name: 'element-id',
+  name: 'eruda',
   async isOpen(): Promise<boolean> {
     if (typeof eruda !== 'undefined') {
       return eruda?._devTools?._isShow === true;
