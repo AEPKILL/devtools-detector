@@ -3,27 +3,11 @@ import { isChrome } from '../shared/browser-info';
 import { clear, log, table } from '../shared/console';
 import { match, now } from '../shared/utils';
 
-const element = document.createElement('div');
-const bigObject: HTMLElement[] = [];
+const largeObject = createLargeObject();
+const largeObjectArray: Record<string, string>[] = [];
 
 for (let i = 0; i < 50; i++) {
-  bigObject.push(element);
-}
-
-function calcTablePrintTime(): number {
-  const start = now();
-
-  table(bigObject);
-
-  return now() - start;
-}
-
-function calcLogPrintTime(): number {
-  const start = now();
-
-  log(bigObject);
-
-  return now() - start;
+  largeObjectArray.push(largeObject);
 }
 
 let maxPrintTime = Math.max(calcLogPrintTime(), 1 / 1000);
@@ -48,3 +32,27 @@ export const performanceChecker: DevtoolsStatusChecker = {
     });
   },
 };
+
+function createLargeObject(): Record<string, string> {
+  const largeObject: Record<string, string> = {};
+  for (let i = 0; i < 500; i++) {
+    largeObject[`${i}`] = `${i}`;
+  }
+  return largeObject;
+}
+
+function calcTablePrintTime(): number {
+  const start = now();
+
+  table(largeObjectArray);
+
+  return now() - start;
+}
+
+function calcLogPrintTime(): number {
+  const start = now();
+
+  log(largeObjectArray);
+
+  return now() - start;
+}

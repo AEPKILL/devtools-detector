@@ -4,4 +4,5 @@ export { functionToStringChecker } from './function-to-string.checker';
 export { regToStringChecker } from './reg-to-string.checker';
 export { debuggerChecker } from './debugger.checker';
 export { dateToStringChecker } from './date-to-string.checker';
-export { performanceChecker } from './performance.checker'
+export { performanceChecker } from './performance.checker';
+export { erudaChecker } from './eruda.checker';
