@@ -3,20 +3,19 @@ import { isChrome } from '../shared/browser-info';
 import { clear, log, table } from '../shared/console';
 import { match, now } from '../shared/utils';
 
-const largeObject = createLargeObject();
-const largeObjectArray: Record<string, string>[] = [];
+let largeObjectArray: Record<string, string>[] | null = null;
 
-for (let i = 0; i < 50; i++) {
-  largeObjectArray.push(largeObject);
-}
-
-let maxPrintTime = Math.max(calcLogPrintTime(), 1 / 1000);
+let maxPrintTime = 0;
 clear();
 export const performanceChecker: DevtoolsStatusChecker = {
   name: 'performance',
   async isOpen(): Promise<boolean> {
+    if (largeObjectArray === null) {
+      largeObjectArray = createLargeObjectArray();
+    }
+
     const tablePrintTime = calcTablePrintTime();
-    maxPrintTime = Math.max(maxPrintTime, calcLogPrintTime());
+    maxPrintTime = Math.max(maxPrintTime, calcLogPrintTime(), 1 / 1000);
 
     clear();
 
@@ -39,6 +38,17 @@ function createLargeObject(): Record<string, string> {
     largeObject[`${i}`] = `${i}`;
   }
   return largeObject;
+}
+
+function createLargeObjectArray(): Record<string, string>[] {
+  const largeObject = createLargeObject();
+  const largeObjectArray: Record<string, string>[] = [];
+
+  for (let i = 0; i < 50; i++) {
+    largeObjectArray.push(largeObject);
+  }
+
+  return largeObjectArray;
 }
 
 function calcTablePrintTime(): number {
