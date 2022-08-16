@@ -4,9 +4,7 @@ import { clear, log, table } from '../shared/console';
 import { match, now } from '../shared/utils';
 
 let largeObjectArray: Record<string, string>[] | null = null;
-
 let maxPrintTime = 0;
-clear();
 export const performanceChecker: DevtoolsStatusChecker = {
   name: 'performance',
   async isOpen(): Promise<boolean> {
