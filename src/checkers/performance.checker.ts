@@ -13,11 +13,13 @@ export const performanceChecker: DevtoolsStatusChecker = {
     }
 
     const tablePrintTime = calcTablePrintTime();
-    maxPrintTime = Math.max(maxPrintTime, calcLogPrintTime(), 1 / 1000);
+    const logPrintTime = calcLogPrintTime();
+    maxPrintTime = Math.max(maxPrintTime, logPrintTime);
 
     clear();
 
     if (tablePrintTime === 0) return false;
+    if (maxPrintTime === 0) return false;
 
     return tablePrintTime > maxPrintTime * 10;
   },
