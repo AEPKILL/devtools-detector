@@ -1,5 +1,5 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
-import { isFirefox, isChrome } from '../shared/browser-info';
+import { isFirefox, isChrome, isIqiyiApp } from '../shared/browser-info';
 import { clear, log } from '../shared/console';
 import { isIpad, isIphone } from '../shared/system-info';
 import { match } from '../shared/utils';
@@ -32,6 +32,7 @@ export const functionToStringChecker: DevtoolsStatusChecker = {
       includes: [true],
       /** 排除 firefox 和  ipad 或 iphone 上的 chrome */
       excludes: [
+        isIqiyiApp,
         isFirefox,
         // ipad 或 iphone 上的 chrome
         (isIpad || isIphone) && isChrome,

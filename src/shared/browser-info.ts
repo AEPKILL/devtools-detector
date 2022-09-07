@@ -33,6 +33,8 @@ export const isEdge = /edge/i.test(userAgent);
 /** webkit */
 export const isWebkit = /webkit/i.test(userAgent) && !isEdge;
 
+export const isIqiyiApp = /IqiyiApp/.test(userAgent);
+
 /** chrome */
 export const isChrome =
   typeof globalThis?.window?.chrome !== 'undefined' ||
@@ -45,3 +47,4 @@ export const isSafari =
   (globalThis?.window?.safari?.pushNotification || false).toString() ===
     '[object SafariRemoteNotification]' ||
   (/safari/i.test(userAgent) && !isChrome);
+
