@@ -1,5 +1,5 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
-import { isChrome } from '../shared/browser-info';
+import { isChrome } from '../shared/context';
 import { clear, log } from '../shared/console';
 import { match } from '../shared/utils';
 import { isIpad, isIphone } from '..';

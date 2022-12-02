@@ -1,4 +1,4 @@
-import { isEdge, isIE } from './browser-info';
+import { isEdge, isIE } from './context';
 
 /**
  * 缓存 console.log 等方法，防止第三方代码 hook console.log 等方法

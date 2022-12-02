@@ -1,8 +1,7 @@
-import { isEdge, isIE, isFirefox } from '../shared/browser-info';
+import { isEdge, isIE, isFirefox, createElement } from '../shared/context';
 import { clear, log } from '../shared/console';
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { match } from '../shared/utils';
-import { createElement } from '../shared/browser-context';
 
 const ele = createElement('div');
 let isOpen = false;

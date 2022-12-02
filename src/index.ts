@@ -50,8 +50,7 @@ export { DevtoolsDetector, checkers };
 
 export { match, specificVersionMatch } from './shared/utils';
 
-export * from './shared/browser-info';
+export * from './shared/context';
 export * from './shared/console';
-export * from './shared/platform-info';
 export * from './shared/version-map';
 export * from './shared/system-info';

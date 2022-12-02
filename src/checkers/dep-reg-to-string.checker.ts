@@ -1,5 +1,5 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
-import { isEdge, isFirefox, isIE } from '../shared/browser-info';
+import { isEdge, isFirefox, isIE } from '../shared/context';
 import { table, clear } from '../shared/console';
 import { match } from '../shared/utils';
 

@@ -1,3 +1,4 @@
+import { inBrowser } from '../shared/context';
 import { DevtoolsDetail } from '../types/devtools-detail.type';
 import { DevtoolsDetectorListener } from '../types/devtools-detector-listener.type';
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
@@ -19,6 +20,8 @@ export class DevtoolsDetector {
   }
 
   launch() {
+    if (!inBrowser) return;
+
     if (this._detectLoopDelay <= 0) {
       this.setDetectDelay(500);
     }
@@ -87,7 +90,7 @@ export class DevtoolsDetector {
       });
     }
 
-    if (this._detectLoopDelay > 0) {
+    if (this._detectLoopDelay > 0 && !this._detectLoopStopped) {
       this._timer = setTimeout(() => this._detectLoop(), this._detectLoopDelay);
     } else {
       this.stop();

@@ -1,6 +1,6 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { clear, log } from '../shared/console';
-import { isWebkit } from '../shared/browser-info';
+import { isWebkit } from '../shared/context';
 import { match } from '../shared/utils';
 
 const reg = / /;

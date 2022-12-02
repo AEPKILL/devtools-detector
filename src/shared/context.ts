@@ -1,5 +1,5 @@
-import { userAgent } from './browser-context';
 import { getGlobalThis } from './utils';
+import { FnArguments } from '../types/utils.type';
 
 const globalThis = getGlobalThis();
 
@@ -15,6 +15,8 @@ declare global {
     };
   }
 }
+
+export const userAgent = globalThis?.navigator?.userAgent || 'unknown';
 
 /** firefox */
 export const isFirefox =
@@ -48,3 +50,15 @@ export const isSafari =
     '[object SafariRemoteNotification]' ||
   (/safari/i.test(userAgent) && !isChrome);
 
+export function createElement(
+  ...args: FnArguments<typeof document['createElement']>
+): ReturnType<typeof document['createElement']> {
+  if (globalThis?.document) {
+    return globalThis.document.createElement(...args);
+  }
+
+  return {} as any;
+}
+
+export const inBrowser =
+  typeof globalThis.document?.createElement === 'function';

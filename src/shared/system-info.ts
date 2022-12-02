@@ -1,4 +1,4 @@
-import { userAgent } from "./browser-context";
+import { userAgent } from "./context";
 
 
 export const isMac = /macintosh/i.test(userAgent);

@@ -4,7 +4,8 @@
  * 现在暂时还未用到
  */
 
-import { userAgent } from './browser-context';
+import { userAgent } from "./context";
+
 
 const versions = (userAgent || '').match(/\w+\/(\d|\.)+(\s|$)/gi) || [];
 const versionMap: { [key: string]: string } = {};
