@@ -34,7 +34,7 @@
     "ts-loader": "^3.5.0",
     "typescript": "^4.2.4",
     "uglifyjs-webpack-plugin": "^1.3.0",
-    "webpack": "^3.12.0"
+    "webpack": "^5.75.0"
   },
   "dependencies": {
     "compare-versions": "^3.6.0"
