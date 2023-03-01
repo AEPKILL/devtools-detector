@@ -30,7 +30,7 @@
   "homepage": "https://github.com/AEPKILL/devtools-detector#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
-    "http-server": "^0.11.1",
+    "http-server": "^14.1.1",
     "ts-loader": "^3.5.0",
     "typescript": "^4.2.4",
     "uglifyjs-webpack-plugin": "^1.3.0",
