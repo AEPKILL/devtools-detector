@@ -1,7 +1,7 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { clear, log } from '../shared/console';
 import { isWebkit } from '../shared/context';
-import { match } from '../shared/utils';
+import { match } from '../utils/match.utils';
 
 const reg = / /;
 let isOpen = false;

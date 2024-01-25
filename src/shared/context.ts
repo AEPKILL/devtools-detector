@@ -1,6 +1,4 @@
-import { getGlobalThis } from './utils';
-import { FnArguments } from '../types/utils.type';
-
+import { getGlobalThis } from '../utils/platform.utils';
 const globalThis = getGlobalThis();
 
 declare global {
@@ -49,16 +47,6 @@ export const isSafari =
   (globalThis?.window?.safari?.pushNotification || false).toString() ===
     '[object SafariRemoteNotification]' ||
   (/safari/i.test(userAgent) && !isChrome);
-
-export function createElement(
-  ...args: FnArguments<typeof document['createElement']>
-): ReturnType<typeof document['createElement']> {
-  if (globalThis?.document) {
-    return globalThis.document.createElement(...args);
-  }
-
-  return {} as any;
-}
 
 export const inBrowser =
   typeof globalThis.document?.createElement === 'function';

@@ -1,7 +1,7 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { isChrome } from '../shared/context';
 import { clear, log } from '../shared/console';
-import { match } from '../shared/utils';
+import { match } from '../utils/match.utils';
 import { isIpad, isIphone } from '..';
 
 var date = new Date();

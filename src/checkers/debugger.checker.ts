@@ -1,4 +1,4 @@
-import { now } from '../shared/utils';
+import { now } from '../utils/time.utils';
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 
 export const debuggerChecker: DevtoolsStatusChecker = {
@@ -7,7 +7,7 @@ export const debuggerChecker: DevtoolsStatusChecker = {
     const startTime = now();
 
     // tslint:disable-next-line:no-empty only-arrow-functions
-    (function () {}.constructor('debugger')());
+    (function () {}).constructor('debugger')();
 
     return now() - startTime > 100;
   },

@@ -5,14 +5,14 @@ import * as checkers from './checkers/checkers';
 const defaultDetector = new DevtoolsDetector({
   // 会按照 checker 的顺序执行检查
   checkers: [
-    checkers.erudaChecker,
-    checkers.elementIdChecker,
-    checkers.regToStringChecker,
-    checkers.functionToStringChecker,
-    checkers.depRegToStringChecker,
-    checkers.dateToStringChecker,
+    // checkers.erudaChecker,
+    // checkers.elementIdChecker,
+    // checkers.regToStringChecker,
+    // checkers.functionToStringChecker,
+    // checkers.depRegToStringChecker,
+    // checkers.dateToStringChecker,
     checkers.performanceChecker,
-    checkers.debuggerChecker,
+    // checkers.debuggerChecker,
   ],
 });
 
@@ -48,9 +48,9 @@ export { DevtoolsStatusChecker } from './types/devtools-status-checker.type';
 
 export { DevtoolsDetector, checkers };
 
-export { match, specificVersionMatch } from './shared/utils';
-
+export * from './utils/match.utils';
+export * from './utils/platform.utils';
+export * from './shared/version-map';
 export * from './shared/context';
 export * from './shared/console';
-export * from './shared/version-map';
 export * from './shared/system-info';

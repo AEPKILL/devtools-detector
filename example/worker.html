@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="worker-src none;">
+    <title>Worker</title>
+  </head>
+  <body>
+    <script>
+      const script = `
+      console.log('worker loaded');
+      onmessage = function(event) {
+        var action = event.data;
+        console[action.type](...action.payload);
+      }
+      `;
+
+      const workerSrc = URL.createObjectURL(new Blob([script]));
+      const worker = new Worker(workerSrc);
+      URL.revokeObjectURL(workerSrc);
+
+      worker.postMessage({
+        type: 'log',
+        payload: ['233333'],
+      });
+
+      worker.onmessage = function (event) {
+        console.log('host', event);
+      };
+    </script>
+  </body>
+</html>

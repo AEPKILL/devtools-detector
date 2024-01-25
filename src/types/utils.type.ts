@@ -1,5 +1,5 @@
-export type FnArguments<T extends (...args: any[]) => any> = T extends (
+export type MethodToAsyncFunction<T extends Function> = T extends (
   ...args: infer Args
-) => any
-  ? Args
+) => infer Return
+  ? (...args: Args) => Promise<Return>
   : never;

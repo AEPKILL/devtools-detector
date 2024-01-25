@@ -1,7 +1,9 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { isChrome } from '../shared/context';
 import { clear, log, table } from '../shared/console';
-import { match, now } from '../shared/utils';
+import { match } from '../utils/match.utils';
+import { now } from '../utils/time.utils';
+import { getWorkerConsole } from '../utils/platform.utils';
 
 let largeObjectArray: Record<string, string>[] | null = null;
 let maxPrintTime = 0;
@@ -12,11 +14,17 @@ export const performanceChecker: DevtoolsStatusChecker = {
       largeObjectArray = createLargeObjectArray();
     }
 
-    const tablePrintTime = calcTablePrintTime();
-    const logPrintTime = calcLogPrintTime();
+    const tablePrintTime = await calcTablePrintTime();
+    const logPrintTime = await calcLogPrintTime();
     maxPrintTime = Math.max(maxPrintTime, logPrintTime);
 
-    clear();
+    const workerConsole = getWorkerConsole();
+
+    if (workerConsole) {
+      await workerConsole.clear();
+    } else {
+      clear();
+    }
 
     if (tablePrintTime === 0) return false;
     if (maxPrintTime === 0) return false;
@@ -51,7 +59,14 @@ function createLargeObjectArray(): Record<string, string>[] {
   return largeObjectArray;
 }
 
-function calcTablePrintTime(): number {
+async function calcTablePrintTime(): Promise<number> {
+  const workerConsole = getWorkerConsole();
+
+  if (workerConsole) {
+    const { time } = await workerConsole.table(largeObjectArray);
+    return time;
+  }
+
   const start = now();
 
   table(largeObjectArray);
@@ -59,7 +74,13 @@ function calcTablePrintTime(): number {
   return now() - start;
 }
 
-function calcLogPrintTime(): number {
+async function calcLogPrintTime(): Promise<number> {
+  const workerConsole = getWorkerConsole();
+  if (workerConsole) {
+    const { time } = await workerConsole.log(largeObjectArray);
+    return time;
+  }
+
   const start = now();
 
   log(largeObjectArray);

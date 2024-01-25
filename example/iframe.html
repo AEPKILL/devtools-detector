@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iframe</title>
+  </head>
+  <body>
+    <button id="button">click</button>
+
+    <script>
+      const iframe = document.createElement('iframe');
+
+      iframe.style.display = 'none';
+      iframe.src = 'about:blank';
+
+      document.body.append(iframe);
+
+      const console = iframe.contentWindow.window.console;
+
+      document.getElementById('button').addEventListener('click', () => {
+        console.log('233333');
+      });
+    </script>
+  </body>
+</html>
