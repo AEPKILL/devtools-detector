@@ -41,7 +41,7 @@ export function getWorkerConsole() {
   } catch {
     try {
       workerConsole = new WorkerConsole(
-        new Worker(`data:text/plain;base64,${atob(WorkerConsole.workerScript)}`)
+        new Worker(`data:text/javascript;base64,${btoa(WorkerConsole.workerScript)}`)
       );
     } catch {
       supportWorkerConsole = false;
