@@ -1,6 +1,6 @@
 {
   "name": "devtools-detector",
-  "version": "2.0.14",
+  "version": "2.0.15",
   "description": "devtools-detector",
   "main": "lib/devtools-detector.js",
   "typings": "lib/index.d.ts",
