@@ -3,31 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="worker-src none;">
+    <!-- <meta http-equiv="Content-Security-Policy" content="worker-src none;" /> -->
     <title>Worker</title>
   </head>
   <body>
     <script>
       const script = `
-      console.log('worker loaded');
       onmessage = function(event) {
         var action = event.data;
-        console[action.type](...action.payload);
+        var startTime = performance.now()
+        postMessage({
+          ...action,
+          id: action.id,
+          time: performance.now() - startTime
+        })
       }
       `;
-
       const workerSrc = URL.createObjectURL(new Blob([script]));
       const worker = new Worker(workerSrc);
       URL.revokeObjectURL(workerSrc);
 
-      worker.postMessage({
-        type: 'log',
-        payload: ['233333'],
-      });
+      let callbacks = {};
+      let id = 0;
+      async function postMessage(data) {
+        const currentId = id++;
+        return new Promise((resolve) => {
+          callbacks[currentId] = resolve;
+          worker.postMessage({
+            id: currentId,
+            data,
+          });
+        });
+      }
 
       worker.onmessage = function (event) {
-        console.log('host', event);
+        callbacks[event.data.id](event.data);
       };
+
+      async function main() {
+        const start = performance.now();
+        const data = await postMessage('hi');
+        console.log(data, performance.now() - start);
+      }
+
+      main();
     </script>
   </body>
 </html>

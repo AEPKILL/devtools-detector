@@ -6,3 +6,4 @@ export { debuggerChecker } from './debugger.checker';
 export { dateToStringChecker } from './date-to-string.checker';
 export { performanceChecker } from './performance.checker';
 export { erudaChecker } from './eruda.checker';
+export { devtoolsFormatterChecker } from './devtools-formatters.checker';

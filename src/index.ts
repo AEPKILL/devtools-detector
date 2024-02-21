@@ -11,6 +11,7 @@ const defaultDetector = new DevtoolsDetector({
     checkers.functionToStringChecker,
     checkers.depRegToStringChecker,
     checkers.dateToStringChecker,
+    checkers.devtoolsFormatterChecker,
     checkers.performanceChecker,
     checkers.debuggerChecker,
   ],
