@@ -19,6 +19,10 @@ export class DevtoolsDetector {
     this._checkers = checkers.slice();
   }
 
+  get isOpen(): boolean {
+    return this._isOpen;
+  }
+
   launch() {
     if (!inBrowser) return;
 
@@ -34,6 +38,7 @@ export class DevtoolsDetector {
   stop() {
     if (!this._detectLoopStopped) {
       this._detectLoopStopped = true;
+      this._isOpen = false;
       clearTimeout(this._timer);
     }
   }
