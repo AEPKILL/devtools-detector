@@ -1,8 +1,6 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { isChrome } from '../shared/context';
-import { clear, log, table } from '../shared/console';
 import { match } from '../utils/match.utils';
-import { now } from '../utils/time.utils';
 import { getWorkerConsole } from '../utils/platform.utils';
 import { WorkerConsole } from '../classes/worker-console';
 import { getLargeObjectArray } from '../utils/large-object.utils';
