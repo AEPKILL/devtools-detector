@@ -1,7 +1,7 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { isChrome } from '../shared/context';
 import { match } from '../utils/match.utils';
-import { getWorkerConsole } from '../utils/platform.utils';
+import { getWorkerConsole, isBrave } from '../utils/platform.utils';
 import { WorkerConsole } from '../classes/worker-console';
 import { getLargeObjectArray } from '../utils/large-object.utils';
 
@@ -20,7 +20,12 @@ export const workerPerformanceChecker: DevtoolsStatusChecker = {
     await workerConsole.clear();
 
     if (tablePrintTime === 0) return false;
-    if (maxPrintTime === 0) return false;
+    if (maxPrintTime === 0) {
+      if (await isBrave()) {
+        return true;
+      }
+      return false;
+    }
 
     return tablePrintTime > maxPrintTime * 10;
   },

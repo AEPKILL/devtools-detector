@@ -3,6 +3,7 @@ import { isChrome } from '../shared/context';
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { getLargeObjectArray } from '../utils/large-object.utils';
 import { match } from '../utils/match.utils';
+import { isBrave } from '../utils/platform.utils';
 import { now } from '../utils/time.utils';
 
 let maxPrintTime = 0;
@@ -10,13 +11,18 @@ export const performanceChecker: DevtoolsStatusChecker = {
   name: 'performance',
   async isOpen(): Promise<boolean> {
     const tablePrintTime = calcTablePrintTime();
-    const logPrintTime = calcLogPrintTime();
+    const logPrintTime = Math.max(calcLogPrintTime(), calcLogPrintTime());
     maxPrintTime = Math.max(maxPrintTime, logPrintTime);
 
     clear();
 
     if (tablePrintTime === 0) return false;
-    if (maxPrintTime === 0) return false;
+    if (maxPrintTime === 0) {
+      if (await isBrave()) {
+        return true;
+      }
+      return false;
+    }
 
     return tablePrintTime > maxPrintTime * 10;
   },

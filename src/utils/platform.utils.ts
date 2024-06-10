@@ -50,3 +50,29 @@ export function getWorkerConsole() {
 
   return workerConsole;
 }
+
+
+
+declare global {
+  interface Navigator {
+    brave: any;
+  }
+}
+export let isBrave = async function (): Promise<boolean> {
+  let _isBrave = false;
+
+  if (navigator.brave) {
+    if (navigator.brave.isBrave) {
+      try {
+        _isBrave = await Promise.race([navigator.brave.isBrave(), new Promise(resolve => setTimeout(() => resolve(false), 1000))]);
+      } catch (e) {
+      }
+    }
+  }
+
+  isBrave = async function () {
+    return _isBrave;
+  }
+
+  return _isBrave;
+}
