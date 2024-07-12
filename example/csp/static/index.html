@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>devtools-detector demo</title>
+    <style>
+      .line {
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      #status {
+        margin-top: 50px;
+        font-size: 30px;
+      }
+
+      #checker {
+        color: brown;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="status" class="line">devtools status: close</div>
+    <div id="checker" class="line"></div>
+    <div id="ua" class="line"></div>
+    <div id="versionMap" class="line"></div>
+    <div id="debug-info" class="line"></div>
+
+    <script src="./devtools-detector.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

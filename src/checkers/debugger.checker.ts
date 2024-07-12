@@ -6,8 +6,12 @@ export const debuggerChecker: DevtoolsStatusChecker = {
   async isOpen(): Promise<boolean> {
     const startTime = now();
 
-    // tslint:disable-next-line:no-empty only-arrow-functions
-    (function () {}).constructor('debugger')();
+    try {
+      // tslint:disable-next-line:no-empty only-arrow-functions
+      (function () {}).constructor('debugger')();
+    } catch {
+      debugger;
+    }
 
     return now() - startTime > 100;
   },

@@ -7,4 +7,4 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 /lib/
-/node_modules/
+**/node_modules/
