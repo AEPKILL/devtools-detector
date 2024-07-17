@@ -50,6 +50,7 @@ export { DevtoolsStatusChecker } from './types/devtools-status-checker.type';
 
 export { DevtoolsDetector, checkers };
 
+export * from './utils/crash.utils';
 export * from './utils/match.utils';
 export * from './utils/platform.utils';
 export * from './shared/version-map';

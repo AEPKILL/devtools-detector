@@ -17,7 +17,7 @@ document.body.appendChild(view);
 
 // 1. add listener
 addListener(
-  isOpen =>
+  (isOpen) =>
     (view.innerText = isOpen
       ? 'devtools status: open'
       : 'devtools status: close')
@@ -29,11 +29,11 @@ launch();
 ### AMD
 
 ```javascript
-require(['devtools-detector'], function(devtoolsDetector) {
+require(['devtools-detector'], function (devtoolsDetector) {
   var view = document.createElement('div');
   document.body.appendChild(view);
 
-  devtoolsDetector.addListener(function(isOpen) {
+  devtoolsDetector.addListener(function (isOpen) {
     view.innerText = isOpen
       ? 'devtools status: open'
       : 'devtools status: close';
@@ -50,7 +50,7 @@ require(['devtools-detector'], function(devtoolsDetector) {
   var view = document.createElement('div');
   document.body.appendChild(view);
 
-  devtoolsDetector.addListener(function(isOpen) {
+  devtoolsDetector.addListener(function (isOpen) {
     view.innerText = isOpen
       ? 'devtools status: open'
       : 'devtools status: close';
@@ -82,7 +82,10 @@ interface DevtoolsDetail {
 - Listener
 
 ```typescript
-type DevtoolsDetectorListener = (isOpen: boolean, detail?: DevtoolsDetail) => void;
+type DevtoolsDetectorListener = (
+  isOpen: boolean,
+  detail?: DevtoolsDetail
+) => void;
 ```
 
 - launch()
@@ -104,6 +107,22 @@ type DevtoolsDetectorListener = (isOpen: boolean, detail?: DevtoolsDetail) => vo
 - setDetectDelay(value: number)
 
   Set detect loop delay time, if **value =< 0** then stop detecting.
+
+- crashBrowserCurrentTab
+
+  Crash the browser current tab, only tested on Chrome
+
+  example:
+
+  ```ts
+  // Crash browser current tab after 2 seconds
+
+  addListener((isOpen) => setTimeout(crashBrowserCurrentTab, 2000));
+  ```
+
+- crashBrowser
+
+  Crash the browser all tabs, **only tested on Chrome**
 
 ## Caveats
 
