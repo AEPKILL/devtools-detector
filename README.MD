@@ -110,19 +110,24 @@ type DevtoolsDetectorListener = (
 
 - crashBrowserCurrentTab
 
-  Crash the browser current tab, only tested on Chrome
+  Crash the browser current tab(**only tested on Chrome**)
 
   example:
 
   ```ts
-  // Crash browser current tab after 2 seconds
+  import { addListener, crashBrowserCurrentTab } from 'devtools-detector';
 
-  addListener((isOpen) => setTimeout(crashBrowserCurrentTab, 2000));
+  // Crash browser current tab after 2 seconds
+  addListener(function (isOpen) {
+    if (isOpen) {
+      setTimeout(crashBrowserCurrentTab, 2000);
+    }
+  });
   ```
 
 - crashBrowser
 
-  Crash the browser all tabs, **only tested on Chrome**
+  Crash the browser all tabs(**only tested on Chrome**)
 
 ## Caveats
 
