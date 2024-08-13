@@ -28,7 +28,7 @@ export const isIE =
   /msie/i.test(userAgent);
 
 /** edge */
-export const isEdge = /edge/i.test(userAgent);
+export const isEdge = /edge/i.test(userAgent) || /EdgiOS/i.test(userAgent);
 
 /** webkit */
 export const isWebkit = /webkit/i.test(userAgent) && !isEdge;
