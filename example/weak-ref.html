@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeakRef</title>
+  </head>
+  <body>
+    <button id="log">log</button>
+
+    <script>
+      let obj = {};
+      const weakRef = new WeakRef(obj);
+
+      document.getElementById('log').addEventListener('click', () => {
+        obj = null;
+        obj = new ArrayBuffer(1024 * 1024 * 10);
+
+        setTimeout(() => {
+          const deref = weakRef.deref();
+          if (deref) alert('array still exists');
+          else alert('array has been garbage collected');
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

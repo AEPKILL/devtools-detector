@@ -5,5 +5,6 @@
     "ipad",
     "iphone"
   ],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "liveServer.settings.port": 5501
 }

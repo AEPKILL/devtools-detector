@@ -1,5 +1,5 @@
 import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
-import { isFirefox, isChrome, isIqiyiApp } from '../shared/context';
+import { isFirefox, isChrome, isIqiyiApp, isEdge } from '../shared/context';
 import { clear, log } from '../shared/console';
 import { isIpad, isIphone } from '../shared/system-info';
 import { match } from '../utils/match.utils';
@@ -27,6 +27,8 @@ export const functionToStringChecker: DevtoolsStatusChecker = {
     return count === 2;
   },
   async isEnable(): Promise<boolean> {
+    const iOS = isIpad || isIphone;
+
     return match({
       /** 匹配所有浏览器 */
       includes: [true],
@@ -35,7 +37,8 @@ export const functionToStringChecker: DevtoolsStatusChecker = {
         isIqiyiApp,
         isFirefox,
         // ipad 或 iphone 上的 chrome
-        (isIpad || isIphone) && isChrome,
+        iOS && isChrome,
+        iOS && isEdge,
       ],
     });
   },
