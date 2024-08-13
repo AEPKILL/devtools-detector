@@ -31,7 +31,7 @@ export const isIE =
 export const isEdge = /edge/i.test(userAgent) || /EdgiOS/i.test(userAgent);
 
 /** webkit */
-export const isWebkit = /webkit/i.test(userAgent) && !isEdge;
+export const isWebkit = /webkit/i.test(userAgent);
 
 export const isIqiyiApp = /IqiyiApp/.test(userAgent);
 
