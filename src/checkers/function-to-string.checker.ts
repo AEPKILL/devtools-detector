@@ -1,4 +1,4 @@
-import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { isFirefox, isChrome, isIqiyiApp, isEdge } from '../shared/context';
 import { clear, log } from '../shared/console';
 import { isIpad, isIphone } from '../shared/system-info';

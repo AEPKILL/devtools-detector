@@ -1,4 +1,4 @@
-import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 
 declare global {
   const eruda:

@@ -1,10 +1,10 @@
-import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { isChrome } from '../shared/context';
 import { clear, log } from '../shared/console';
 import { match } from '../utils/match.utils';
 import { isIpad, isIphone } from '..';
 
-var date = new Date();
+const date = new Date();
 
 let count = 0;
 

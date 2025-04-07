@@ -1,4 +1,4 @@
-import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { clear, log } from '../shared/console';
 import { isWebkit } from '../shared/context';
 import { match } from '../utils/match.utils';

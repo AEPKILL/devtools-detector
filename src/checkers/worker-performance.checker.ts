@@ -1,8 +1,8 @@
-import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { isChrome } from '../shared/context';
 import { match } from '../utils/match.utils';
 import { getWorkerConsole, isBrave } from '../utils/platform.utils';
-import { WorkerConsole } from '../classes/worker-console';
+import type { WorkerConsole } from '../classes/worker-console';
 import { getLargeObjectArray } from '../utils/large-object.utils';
 
 let maxPrintTime = 0;

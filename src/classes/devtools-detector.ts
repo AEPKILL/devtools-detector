@@ -1,7 +1,7 @@
 import { inBrowser } from '../shared/context';
-import { DevtoolsDetail } from '../types/devtools-detail.type';
-import { DevtoolsDetectorListener } from '../types/devtools-detector-listener.type';
-import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import type { DevtoolsDetail } from '../types/devtools-detail.type';
+import type { DevtoolsDetectorListener } from '../types/devtools-detector-listener.type';
+import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 
 export interface DetectorOptions {
   checkers: DevtoolsStatusChecker[];
@@ -87,7 +87,7 @@ export class DevtoolsDetector {
       }
     }
 
-    if (isOpen != this._isOpen) {
+    if (isOpen !== this._isOpen) {
       this._isOpen = isOpen;
       this._broadcast({
         isOpen,

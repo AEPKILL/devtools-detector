@@ -1,4 +1,4 @@
-import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { isFirefox, isIE } from '../shared/context';
 import { table, clear } from '../shared/console';
 import { match } from '../utils/match.utils';

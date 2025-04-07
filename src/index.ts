@@ -1,16 +1,16 @@
 import { DevtoolsDetector } from './classes/devtools-detector';
-import { DevtoolsDetectorListener } from './types/devtools-detector-listener.type';
+import type { DevtoolsDetectorListener } from './types/devtools-detector-listener.type';
 import * as checkers from './checkers/checkers';
 
 const defaultDetector = new DevtoolsDetector({
   // 会按照 checker 的顺序执行检查
   checkers: [
     checkers.erudaChecker,
-    checkers.elementIdChecker,
-    checkers.regToStringChecker,
-    checkers.functionToStringChecker,
-    checkers.depRegToStringChecker,
-    checkers.dateToStringChecker,
+    // checkers.elementIdChecker,
+    // checkers.regToStringChecker,
+    // checkers.functionToStringChecker,
+    // checkers.depRegToStringChecker,
+    // checkers.dateToStringChecker,
     checkers.devtoolsFormatterChecker,
     checkers.performanceChecker,
     // checkers.workerPerformanceChecker,

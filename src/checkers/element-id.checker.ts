@@ -1,6 +1,6 @@
 import { isEdge, isIE, isFirefox } from '../shared/context';
 import { clear, log } from '../shared/console';
-import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { match } from '../utils/match.utils';
 import { createElement } from '../utils/platform.utils';
 

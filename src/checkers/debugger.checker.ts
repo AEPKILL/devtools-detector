@@ -1,5 +1,5 @@
 import { now } from '../utils/time.utils';
-import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 
 export const debuggerChecker: DevtoolsStatusChecker = {
   name: 'debugger-checker',
@@ -7,9 +7,9 @@ export const debuggerChecker: DevtoolsStatusChecker = {
     const startTime = now();
 
     try {
-      // tslint:disable-next-line:no-empty only-arrow-functions
-      (function () {}).constructor('debugger')();
+      (() => {}).constructor('debugger')();
     } catch {
+      // biome-ignore lint/suspicious/noDebugger: <explanation>
       debugger;
     }
 

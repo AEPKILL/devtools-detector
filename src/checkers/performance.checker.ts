@@ -1,6 +1,6 @@
 import { clear, log, table } from '../shared/console';
 import { isChrome } from '../shared/context';
-import { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
+import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { getLargeObjectArray } from '../utils/large-object.utils';
 import { match } from '../utils/match.utils';
 import { isBrave } from '../utils/platform.utils';
