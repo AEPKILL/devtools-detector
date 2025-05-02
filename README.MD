@@ -8,6 +8,10 @@
 
 **[DEMO](http://blog.aepkill.com/demos/devtools-detector/)**
 
+## How it works
+
+[How it works](./HOW_IT_WORKS.md)
+
 ### ES6 & TypeScript
 
 ```javascript
@@ -124,7 +128,3 @@ type DevtoolsDetectorListener = (
 ## License
 
 MIT © [AEPKILL](mailto:a@aepkill.com)
-
-```
-
-```
