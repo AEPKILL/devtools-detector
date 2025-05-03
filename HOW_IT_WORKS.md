@@ -38,6 +38,10 @@ By recording the time difference before and after the `debugger` statement, we c
 
 > ⚠️ Note: This method significantly impacts user experience and can be easily bypassed, so it's only used as a fallback solution.
 
+## Additional Detection Methods
+
+- [devtoolsFormatters](https://developer.chrome.com/docs/devtools/javascript/console#devtoolsformatters) relies on Chrome's devtoolsFormatters API, which requires browser support and user activation (commonly enabled by Vue developers)
+
 ## How Were These Differences Discovered?
 
 I initially discovered these techniques on StackOverflow. Curious about how they worked, I delved into the Chrome DevTools source code and uncovered these mechanisms.
