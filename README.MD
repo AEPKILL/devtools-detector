@@ -8,10 +8,6 @@
 
 **[DEMO](http://blog.aepkill.com/demos/devtools-detector/)**
 
-## How it works
-
-[How it works](./HOW_IT_WORKS.md)
-
 ### ES6 & TypeScript
 
 ```javascript
@@ -113,6 +109,10 @@ type DevtoolsDetectorListener = (
   ```
 
 - `crashBrowser()`: Crash all browser tabs (tested only on Chrome)
+
+## How it works
+
+[How it works](./HOW_IT_WORKS.md)
 
 ## Caveats
 
