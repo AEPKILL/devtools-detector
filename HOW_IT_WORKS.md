@@ -40,7 +40,7 @@ By recording the time difference before and after the `debugger` statement, we c
 
 ## Additional Detection Methods
 
-- [devtoolsFormatters](https://developer.chrome.com/docs/devtools/javascript/console#devtoolsformatters) relies on Chrome's devtoolsFormatters API, which requires browser support and user activation (commonly enabled by Vue developers)
+- [devtoolsFormatters](https://docs.google.com/document/d/1FTascZXT9cxfetuPRT2eXPQKXui4nWFivUnS_335T3U/preview?tab=t.0#heading=h.xuvxhsd2bp05) requires users to manually enable the custom formatter feature (some Vue developers tend to enable this)
 
 ## How Were These Differences Discovered?
 
