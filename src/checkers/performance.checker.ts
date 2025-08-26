@@ -1,5 +1,5 @@
 import { clear, log, table } from '../shared/console';
-import { isChrome } from '../shared/context';
+import { isChrome, isFirefox, isSafari } from '../shared/context';
 import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { getLargeObjectArray } from '../utils/large-object.utils';
 import { match } from '../utils/match.utils';
@@ -28,8 +28,7 @@ export const performanceChecker: DevtoolsStatusChecker = {
   },
   async isEnable(): Promise<boolean> {
     return match({
-      /** 暂时仅用于 Chrome 浏览器 */
-      includes: [isChrome],
+      includes: [isChrome, isSafari, isFirefox],
       excludes: [],
     });
   },
