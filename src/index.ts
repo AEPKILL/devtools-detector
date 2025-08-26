@@ -6,7 +6,7 @@ const defaultDetector = new DevtoolsDetector({
   // 会按照 checker 的顺序执行检查
   checkers: [
     checkers.erudaChecker,
-    // checkers.elementIdChecker,
+    checkers.elementIdChecker,
     // checkers.regToStringChecker,
     // checkers.functionToStringChecker,
     // checkers.depRegToStringChecker,

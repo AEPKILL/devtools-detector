@@ -1,4 +1,4 @@
-import { isEdge, isIE, isFirefox } from '../shared/context';
+import { isEdge, isIE, isFirefox, isSafari } from '../shared/context';
 import { clear, log } from '../shared/console';
 import type { DevtoolsStatusChecker } from '../types/devtools-status-checker.type';
 import { match } from '../utils/match.utils';
@@ -27,9 +27,7 @@ export const elementIdChecker: DevtoolsStatusChecker = {
   },
   async isEnable(): Promise<boolean> {
     return match({
-      /** 匹配所有浏览器 */
-      includes: [true],
-      excludes: [isIE, isEdge, isFirefox],
+      includes: [isSafari]
     });
   },
 };
